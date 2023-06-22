@@ -1,0 +1,188 @@
+.profile_container {
+  background: rgb(57, 62, 0);
+  background: radial-gradient(circle, rgba(57, 62, 0, 0.3617822128851541) 23%, rgba(0, 247, 103, 0.362) 100%, rgba(60, 164, 163, 0.7903536414565826) 100%);
+}
+
+.profile {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 90px;
+  background: rgb(9, 9, 121);
+  background: radial-gradient(circle, rgba(9, 9, 121, 1) 0%, rgba(2, 0, 36, 0.6783088235294117) 100%, rgba(0, 212, 255, 1) 100%);
+}
+
+.profile-photo {
+  margin-bottom: 20px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.profile .preview_img {
+  background-image: url('https://res.cloudinary.com/dttyhvsnv/image/upload/v1677430557/default_pic_gxoa10.png');
+  width: 200px;
+  height: 200px;
+  background-position: center center;
+  background-size: cover;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+
+.profile-photo label {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+
+.profile-photo img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.profile-photo .filename {
+  display: block;
+  font-size: 16px;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.profile form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.profile textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+
+.profile .image_button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.profile .image_button button {
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background-color: rgb(15, 15, 87, 0.8);
+  transition: all .2s;
+}
+
+.profile .image_button button:hover {
+  background-color: rgb(15, 15, 87);
+  cursor: pointer;
+  transform: scale(1.01);
+}
+
+.hreffor {
+  color: rgb(209, 236, 255);
+}
+
+.profile button[type=submit] {
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background-color: rgba(104, 214, 7, 0.8);
+  width: 100%;
+}
+
+.profile button[type=submit]:hover {
+  background-color: rgba(127, 255, 16, 0.8);
+}
+
+.profile .button:hover {
+  background-color: rgb(15, 15, 87);
+}
+
+
+.about_me {
+  min-height: 60px;
+  background-color: #ffffff;
+  width: 100%;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.change_about {
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background-color: rgb(15, 15, 87, 0.8);
+  font-size: 16px;
+  margin-top: 6px;
+  transition: all .2s;
+}
+
+.change_about:hover {
+  background-color: rgb(15, 15, 87);
+}
+
+.my_profile_error {
+  color: red;
+}
+
+@media screen and (max-width: 480px) {
+  .profile {
+    padding: 10px;
+  }
+
+  label,
+  textarea,
+  button {
+    font-size: 16px;
+  }
+}
+
+.change_about {
+  cursor: pointer;
+}
+
+.jenc {
+  font-size: 17px;
+  color: white;
+  cursor: pointer;
+  background-color: green;
+  transition: 300ms;
+}
+
+.jenc:hover {
+  transition: 300ms;
+  transform: scale(1.03);
+}
+
+.profile {
+  border-radius: 10px;
+}
