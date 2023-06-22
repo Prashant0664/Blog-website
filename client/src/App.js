@@ -11,11 +11,12 @@ import Profile from "./pages/Profile";
 import ArticlePage from "./pages/ArticlePage";
 import ResetPassword from "./pages/ResetPassword";
 import ProfileOfOtherUser from "./components/profileOftherUser/ProfileOfOtherUser";
-
+import { inject } from '@vercel/analytics';
+ 
 function App() {
   const { user } = useSelector((state) => ({ ...state }));
 
-
+  inject();
 
   return (
     <div className="App">
