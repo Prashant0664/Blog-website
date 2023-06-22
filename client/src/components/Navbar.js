@@ -27,7 +27,7 @@ function Navbar({ postpage }) {
   // console.log(user);
   const handleLoad = () => {
     if (user === null || user === undefined) {
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/login/success`, {
+      fetch(`https://allblogwebsiteapi.onrender.com/login/success`, {
         method: "GET",
         credentials: "include",
         headers: {
