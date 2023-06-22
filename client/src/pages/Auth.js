@@ -71,7 +71,7 @@ function Auth() {
   const signUp = async () => {
     try {
       const { data } = await axios.post(
-        `https://allblogwebsiteapi.onrender.com/register`,
+        `${process.env.REACT_APP_BACKEND_URL}/register`,
         {
           name,
           email,
