@@ -39,7 +39,7 @@ exports.register = async (req, res) => {
       email,
       password: hashed_password,
     }).save();
-    console.log("999");
+    // console.log("999");
     const token = generateToken({ id: user._id.toString() }, "15d");
     res.send({
       id: user._id,
@@ -49,7 +49,7 @@ exports.register = async (req, res) => {
       message: "Register Success !",
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(500).json({ message: error.message });
   }
 };

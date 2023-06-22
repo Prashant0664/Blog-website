@@ -41,7 +41,7 @@ function Navbar({ postpage }) {
           throw new Error("Authentication Failed!");
         })
         .then((resObject) => {
-          console.log("resObject", resObject);
+          // console.log("resObject", resObject);
           dispatch({ type: "LOGIN", payload: resObject.user });
           Cookies.set("user", JSON.stringify(resObject.user), {
             expires: 15,

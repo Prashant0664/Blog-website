@@ -6,7 +6,7 @@ exports.newPost = async (req, res) => {
     await newPost.populate("user", "name picture");
     res.json(newPost);
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     return res.status(500).json({ message: error.message });
   }
 };
@@ -34,7 +34,7 @@ exports.postcomment = async (req, res) => {
     user.save();
     res.status(201).json({msg:"ok"});
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     res.status(401).json({msg:"An Error Occurred"})
   }
 }
@@ -45,7 +45,7 @@ exports.getcomment=async(req,res)=>{
     const user=data.comments
     res.status(201).json(user);
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     res.status(400).json({msg:"error"})
   }
 }
@@ -70,7 +70,7 @@ exports.allPost = async (req, res) => {
       size,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(400).json(error);
   }
 };

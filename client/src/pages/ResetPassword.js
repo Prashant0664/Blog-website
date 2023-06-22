@@ -25,7 +25,6 @@ function ResetPassword() {
           email,
         }
       );
-      console.log(data)
       setFoundUser(data[0])
 
 

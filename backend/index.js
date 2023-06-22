@@ -25,7 +25,7 @@ app.use(
 
 mongoose.set("strictQuery", false);
 mongoose.connect(keys.mongoURI, () => {
-  console.log("connected to db");
+  // console.log("connected to db");
 });
 
 var store = new MongoDBStore(
@@ -35,7 +35,7 @@ var store = new MongoDBStore(
   },
   function (error) {
     if (error) {
-      console.log("err", error);
+      // console.log("err", error);
     }
   }
 );
