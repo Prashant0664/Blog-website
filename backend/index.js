@@ -16,7 +16,7 @@ require('dotenv').config();
 
 app.use(
   cors({
-    origin: ["https://allblogwebsiteapi.onrender.com/", "http://localhost:3000"],
+    origin: ["https://allblogwebsiteapi.onrender.com", "https://allblogapp-project.vercel.app"],
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })

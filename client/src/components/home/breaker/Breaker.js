@@ -2,7 +2,7 @@ import React from 'react';
 import './breaker.css'
 
 function Breaker({ text }) {
-  return (
+  return ( 
     <div className='breaker' >
       {text}
     </div>

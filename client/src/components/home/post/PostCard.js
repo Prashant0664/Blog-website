@@ -47,7 +47,7 @@ function PostCard({ post }) {
           </div>
           <div className="savePost">
             <CiBookmark size={25} />
-            <BsDownload size={23} className="downloadl" />
+            <BsDownload size={23} className="downloadl" onClick={navigateToArticle}/>
           </div>
         </div>
       </div>

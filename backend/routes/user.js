@@ -15,7 +15,7 @@ var GoogleStrategy = require('passport-google-oidc');
 
 const router = express.Router();
 const { authUser } = require("../middleware/auth");
-const CLIENT_URL = "http://localhost:3000";
+const CLIENT_URL = "https://allblogapp-project.vercel.app";
 // app.use(passport.initialize());
 // app.use(passport.session());
 router.post("/register", register);
@@ -29,7 +29,7 @@ router.post("/changePassword", changePassword);
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT,
   clientSecret: process.env.GOOGLE_SECRET,
-  callbackURL: 'http://localhost:3000',
+  callbackURL: 'https://allblogapp-project.vercel.app',
   passReqToCallback: true
 },
   function (req, acc, ref, profile, done) {

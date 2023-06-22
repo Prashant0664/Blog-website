@@ -66,7 +66,7 @@ function Article({ post }) {
     }
     try {
       const data = await createcomment(
-        dbname, 
+        dbname,
         dbPic,
         comment,
         user.id,
@@ -116,7 +116,7 @@ function Article({ post }) {
     <div className="article_wrapper" id="123k">
       <div className="article">
         <div className="user_info">
-          <div className="user_image">
+          <div className="user_image downloadi">
             <img src={post.user.picture} onClick={() => window.open(mm, "_blank")} alt="" />
           </div>
           <div className="user_side">
@@ -127,7 +127,7 @@ function Article({ post }) {
             </span>
             <span>"{post.user.about ? post.user.about : "User"}"</span>
           </div>
-          <div className=""><BsDownload className="" onClick={() => { handleDown() }} /></div>
+          <div className="downloadi"><BsDownload className="" onClick={() => { handleDown() }} /></div>
         </div>
         <div className="article_title" >{post.title}</div>
         <span className="post_date">
@@ -186,18 +186,20 @@ function Article({ post }) {
                     {allc.map((i) => {
                       // console.log(i);
                       const date = new Date(i.commentAt);
-                      const dates=date.toLocaleDateString()
+                      const dates = date.toLocaleDateString()
                       return (
                         <div className="com-all">
                           <div className="com-single">
                             <div className="side-com">
                               <div className="com-pic">
-                                <img src={i.image} alt={i.image} className="com-img2" />
+                                <img src={i.image} alt={i.image} onClick={() => window.open(i.image, "_blank")} className="com-img2" />
                               </div>
                               <div className="com-con">
                                 <div className="com-nam">
                                   <div className="com-name-main">
-                                    {i.name}
+                                    <Link to={`/ProfileRedirect/${i.commentBy}`}>
+                                      {i.name}
+                                    </Link>
                                   </div>
                                 </div>
                                 <div className="com-date">
