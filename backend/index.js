@@ -16,7 +16,7 @@ require('dotenv').config();
 
 app.use(
   cors({
-    origin: ["http://localhost:5000", "http://localhost:3000"],
+    origin: ["https://allblogwebsiteapi.onrender.com/", "http://localhost:3000"],
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
