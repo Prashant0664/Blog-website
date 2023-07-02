@@ -25,7 +25,28 @@ const userSchema = new Schema(
     },
     about: {
       type: String
+    },
+    bookmarks:{
+      type:Array,
+      default:[]
+    },
+    posts:{
+      type:Array,
+      default:[]
+    },
+    following:{
+      type:Array,
+      default:[],
+    },
+    followerscount:{
+      type:Number,
+      default:0,
+    },
+    followingcount:{
+      type:Number,
+      default:0,
     }
+
   },
   { timestamps: true }
 );

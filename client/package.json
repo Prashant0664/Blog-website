@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "@redux-devtools/extension": "^3.2.5",
@@ -15,7 +15,9 @@
     "js-cookie": "^3.0.1",
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
+    "react-confirm-alert": "^3.0.6",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^0.4.0",
     "react-icons": "^4.7.1",
     "react-infinite-scroll-component": "^6.1.0",
     "react-parallax": "^3.5.1",
@@ -24,6 +26,7 @@
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
+    "reactjs-popup": "^2.0.5",
     "redux": "^4.2.1",
     "web-vitals": "^2.1.4"
   },

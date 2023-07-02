@@ -34,10 +34,6 @@ function Posts() {
     }
   };
 
-
-
-
-
   return (
     <InfiniteScroll
       dataLength={posts.length}

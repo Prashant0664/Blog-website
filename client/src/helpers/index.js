@@ -75,17 +75,17 @@ export const createPost = async (
     return error.response.data.message;
   }
 };
-export const createcomment=async (
-  
+export const createcomment = async (
+
   name,
   image,
   content,
   id1,
   id2
 
-)=>{
+) => {
   try {
-    const {data}=await axios.post(
+    const { data } = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/postcomment`,
       {
         name,
@@ -97,26 +97,240 @@ export const createcomment=async (
     )
     return data
   } catch (error) {
-    console.log("error in postcomment indexjs " , error)
+    console.log("error in postcomment indexjs ", error)
     return;
   }
 }
-export const getcomment=async(id)=>{
+
+export const fetchprof = async (id) => {
   try {
-    var {data}=await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/getcomment`,
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/fetchprof`,
       {
-        id
+        id,
+
       }
 
     )
-    data=[...data,{msg:"ok"}];
+    // data = [...data, { msg: "ok" }];
     return data;
   } catch (error) {
     console.log(error);
-    return {msg:"error"};
+    return { msg: "error" };
   }
 }
+export const getcomment = async (id) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/getcomment`,
+      {
+        id,
+
+      }
+
+    )
+    data = [...data, { msg: "ok" }];
+    return data;
+  } catch (error) {
+    console.log(error);
+    return { msg: "error" };
+  }
+}
+export const getfollowercount = async (id) => {
+  try {
+    const data = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/countfollower`, {
+      id
+    })
+    return data
+  } catch (error) {
+    return { msg: "error" }
+  }
+}
+
+
+export const getallpostdata = async (id) => {
+  try {
+    const data = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/getallpostdata`, {
+      id
+    })
+    return data
+  } catch (error) {
+    console.log(error);
+    // console.log(error);
+    return { msg: "error" }
+  }
+}
+export const getfollowingcount = async (id) => {
+  try {
+    const data = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/countfollowing`, {
+      id
+    })
+    return data
+  } catch (error) {
+    return { msg: "error" }
+  }
+}
+
+export const showbookmarks = async (id) => {
+  try {
+    const data = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/showbookmarks`, {
+      id
+    })
+    return data;
+  } catch (error) {
+    return { msg: "error" }
+  }
+}
+
+export const reportcontent = async (pid, postid, userid, name1, name2, reason) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/reportcontent`, {
+      pid,
+      postid,
+      userid,
+      name1,
+      name2,
+      reason
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in Reporting", error);
+    return { msg: error };
+  }
+}
+export const deletebookmark = async (postid, userid) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/deletebookmark`, {
+      postid,
+      userid
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in Bookmark", error);
+    return { msg: error };
+  }
+}
+
+export const deletepost = async (postid, userid) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/deletepost`, {
+      postid,
+      userid
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in deleting post", error);
+    return { msg: error };
+  }
+}
+export const checkbookmark = async (postid, userid) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/checkbookmark`, {
+      postid,
+      userid
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in Bookmark", error);
+    return { msg: error };
+  }
+}
+
+export const fetchfollowing = async (id) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/fetchfollowing`, {
+      id,
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in fetch followers", error);
+    return;
+  }
+}
+export const startfollow = async (id,id2) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/startfollow`, {
+      id,
+      id2
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in start following", error);
+    return;
+  }
+}
+export const unfollow = async (id,id2) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/unfollow`, {
+      id,
+      id2
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in start following", error);
+    return;
+  }
+}
+export const checkfollowing = async (id,id2) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/checkfollow`, {
+      id,
+      id2
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in fetch check following", error);
+    return;
+  }
+}
+export const showmyposts = async (id) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/showmyposts`, {
+      id
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in Bookmark", error);
+    return;
+  }
+}
+export const bookmark = async (postid, userid) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/setbookmark`, {
+      postid,
+      userid
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in Bookmark", error);
+    return;
+  }
+}
+
 export const getAllPost = async (activePage, LIMIT) => {
   try {
     const { data } = await axios.get(

@@ -84,6 +84,9 @@ function Footer() {
         <p>
           &copy; 2021-2025 @ Mady By Prashant
         </p>
+        <p>
+          For any issue kindly send mail to prashant201103@gmail.com
+        </p>
       </div>
     </footer>
   );

@@ -67,7 +67,6 @@ exports.sendResetCode = (email, name, code) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      // console.log(error);
     }
   });
 };

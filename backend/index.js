@@ -16,16 +16,15 @@ require('dotenv').config();
 
 app.use(
   cors({
+    // origin: ["http://localhost:5000", "http://localhost:3000"],
     origin: ["https://allblogwebsiteapi.onrender.com", "https://allblogapp-project.vercel.app"],
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
 );
 
-
 mongoose.set("strictQuery", false);
 mongoose.connect(keys.mongoURI, () => {
-  // console.log("connected to db");
 });
 
 var store = new MongoDBStore(

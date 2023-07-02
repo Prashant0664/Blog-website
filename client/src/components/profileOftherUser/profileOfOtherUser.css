@@ -15,7 +15,7 @@
     margin-top: 75px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .user_wrapper .user_image img {
@@ -49,10 +49,19 @@
         width: 85%;
     }
 }
-
+@media screen and (max-width:440px) {
+    
+    .aboutn{
+        margin-top:400px;
+    }
+    .user_about{
+        margin-top:280px;
+    }
+}
 
 .imgpro {
     width: 300px;
+    position: relative;
     /* height:200px; */
     /* width:auto; */
 }
@@ -60,13 +69,10 @@
 .user_about {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
+.cent{
+    text-align: center;
+    cursor: pointer;
+}
 .user_wrapper {
     margin: auto;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* justify-items: center; */
-    /* padding: auto; */
-    /* width:100%; */
-    /* position: relative; */
 }

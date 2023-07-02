@@ -1,4 +1,5 @@
 const express = require("express");
+
 const {
   register,
   login,
@@ -8,6 +9,20 @@ const {
   sendResetPasswordCode,
   validateResetCode,
   changePassword,
+  bookmark,
+  deletebookmark,
+  checkbookmark,
+  sendreportmails,
+  followercount,
+  followingcount,
+  showbookmark,
+  fetchprof,
+  showmyposts,
+  deletepost,
+  fetchfollowing,
+  follow,
+  checkfollowing,
+  unfollow
 } = require("../controllers/user");
 var passport = require('passport')
 const OAuthStrategy = require('passport-oauth').OAuthStrategy;
@@ -26,6 +41,23 @@ router.post("/findOutUser", findOutUser);
 router.post("/sendResetPasswordCode", sendResetPasswordCode);
 router.post("/validateResetCode", validateResetCode);
 router.post("/changePassword", changePassword);
+router.post("/setbookmark", bookmark);
+router.post("/deletebookmark", deletebookmark);
+router.post("/checkbookmark", checkbookmark);
+router.post("/reportcontent", sendreportmails);
+router.post("/countfollower", followercount);
+router.post("/countfollowing", followingcount);
+router.post("/showbookmarks", showbookmark);
+router.post("/fetchprof", fetchprof);
+router.post("/showmyposts", showmyposts);
+router.post("/deletepost", deletepost);
+router.post("/fetchfollowing", fetchfollowing);
+router.post("/startfollow", follow);
+router.post("/unfollow", unfollow);
+router.post("/checkfollow", checkfollowing);
+
+
+
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT,
   clientSecret: process.env.GOOGLE_SECRET,

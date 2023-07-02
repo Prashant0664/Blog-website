@@ -24,10 +24,9 @@ function Navbar({ postpage }) {
     navigate("/");
   };
   const { user } = useSelector((state) => ({ ...state }));
-  // console.log(user);
   const handleLoad = () => {
     if (user === null || user === undefined) {
-      fetch(`https://allblogwebsiteapi.onrender.com/login/success`, {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/login/success`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -41,7 +40,6 @@ function Navbar({ postpage }) {
           throw new Error("Authentication Failed!");
         })
         .then((resObject) => {
-          // console.log("resObject", resObject);
           dispatch({ type: "LOGIN", payload: resObject.user });
           Cookies.set("user", JSON.stringify(resObject.user), {
             expires: 15,
@@ -86,6 +84,7 @@ function Navbar({ postpage }) {
       <div className="search">
         <div className="search_wrap">
           <input className="inputnav" type="text" name="" id="" placeholder="Search..." />
+
         </div>
         <div className="imagesearch">
           <BsSearch size={view1 ? 15 : 20} />

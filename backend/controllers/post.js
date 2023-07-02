@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 exports.newPost = async (req, res) => {
   try {
@@ -10,6 +11,7 @@ exports.newPost = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 exports.postcomment = async (req, res) => {
   try {
     const { name,
@@ -19,34 +21,47 @@ exports.postcomment = async (req, res) => {
       id2 } = req.body;
     const user = await Post.findOne({ user: id2 });
     // var n = user.comment.size();
-    const date=new Date();
+    const date = new Date();
 
-    var ndata={
-      comment:content,
-      image:image,
-      commentBy:id1,
-      commentAt:date,
-      name:name
+    var ndata = {
+      comment: content,
+      image: image,
+      commentBy: id1,
+      commentAt: date,
+      name: name
     }
-    var datas=user.comments;
+    var datas = user.comments;
     datas.push(ndata)
-    user.comments=datas;
+    user.comments = datas;
     user.save();
-    res.status(201).json({msg:"ok"});
+    res.status(201).json({ msg: "ok" });
   } catch (error) {
     // console.log(error)
-    res.status(401).json({msg:"An Error Occurred"})
+    res.status(401).json({ msg: "An Error Occurred" })
   }
 }
-exports.getcomment=async(req,res)=>{
+exports.getallpostdata = async (req, res) => {
   try {
-    const {id}=req.body;
-    const data=await Post.findOne({user:id});
-    const user=data.comments
+    const { id } = req.body;
+    var data = await Post.findById(id);
+    // console.log(data.user);
+    const datau = await User.findById(data.user)
+
+    return res.status(200).json({ msg: data})
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ msg: "error" });
+  }
+}
+exports.getcomment = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const data = await Post.findOne({ user: id });
+    const user = data.comments
     res.status(201).json(user);
   } catch (error) {
     // console.log(error)
-    res.status(400).json({msg:"error"})
+    res.status(400).json({ msg: "error" })
   }
 }
 

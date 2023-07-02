@@ -25,9 +25,6 @@ function App() {
         <Route path="/article" exact element={<ArticlePage />} />
         <Route path="/ProfileRedirect/:userID" element={<ProfileOfOtherUser />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-
-
-
         <Route element={<LoggedInRoutes />}>
           <Route path="/write" element={<WritePost />} />
           <Route path="/profile" element={<Profile />} />

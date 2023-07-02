@@ -7,12 +7,19 @@ import '../components/article/article.css'
 function ArticlePage() {
   const location = useLocation()
   const { post } = location.state;
-  return (
-    <div className='ArticlePage'>
-      <Navbar />
-      <Article post={post} />
-    </div>
-  )
+  if(location.state.ooo){
+    return (
+      <div className='ArticlePage'>
+        <Navbar /> 
+        <Article post={location.state.ooo} />
+      </div>)
+  }else {
+    return (
+      <div className='ArticlePage'>
+        <Navbar /> 
+        <Article post={post} />
+      </div>)
+  }
 }
 
 export default ArticlePage
