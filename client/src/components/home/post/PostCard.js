@@ -46,7 +46,7 @@ function PostCard({ post }) {
             <span className="date">{localTimeString}</span>
           </div>
           <div className="savePost">
-            <CiBookmark size={25} onClick={navigateToArticle}/>
+            {/* <CiBookmark size={25} onClick={navigateToArticle}/> */}
             <BsDownload size={23} className="downloadl" onClick={navigateToArticle}/>
           </div>
         </div>
