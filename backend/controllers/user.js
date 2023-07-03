@@ -104,7 +104,7 @@ exports.deletebookmark = async (req, res) => {
       for (var i = 0; i < m.length; i++) {
         if (m[i] == postid) {
           f = 1;
-          m.remove(postid)
+          m.splice(i, 1);
         }
       }
       user.bookmarks = m;
@@ -150,32 +150,7 @@ exports.checkbookmark = async (req, res) => {
     return res.status(401).json({ msg: "ERROR" })
   }
 }
-exports.checkfollowing = async (req, res) => {
-  try {
-    const {
-      postid,
-      userid
-    } = req.body;
-    const user = await User.findOne({ _id: userid });
-    const post = await Post.findOne({ _id: postid });
-    var m = user.following;
-    if (m.length == 0) {
-      return res.status(202).json({ msg: "Does not exist" });
-    }
-    else {
-      for (var i = 0; i < m.length; i++) {
-        if (m[i] == post.user) {
-          return res.status(202).json({ msg: "ok" });
-        }
-      }
-      return res.status(202).json({ msg: "Does not exists" });
-    }
-  }
-  catch (error) {
-    console.log(error);
-    return res.status(401).json({ msg: "ERROR" })
-  }
-}
+
 exports.fetchprof = async (req, res) => {
   try {
     const { id } = req.body
@@ -208,7 +183,7 @@ exports.bookmark = async (req, res) => {
       for (var i = 0; i < m.length; i++) {
         if (m[i] == postid) {
           f = 1;
-          m.remove(postid)
+          m.splice(i, 1);
           m.push(postid);
         }
       }
@@ -364,9 +339,12 @@ exports.follow = async (req, res) => {
       for (var i = 0; i < m.length; i++) {
         if (m[i] == id2) {
           f = 1;
-          m.remove(id2)
+          m.splice(i, 1);
           m.push(id2);
         }
+      }
+      if(!f){
+        m.push(id2);
       }
       
       user.following = m;
@@ -426,7 +404,7 @@ exports.unfollow = async (req, res) => {
       for (var i = 0; i < m.length; i++) {
         if (m[i] == id2) {
           f = 1;
-          m.remove(id2)
+          m.splice(i, 1);
         }
       }
       user.following = m;
@@ -479,7 +457,7 @@ exports.checkfollowing = async (req, res) => {
       return res.status(200).json({ msg: "not" });
     }
     for (var i = 0; i < arr.length; i++) {
-      if(arr[i]==id2){
+      if(arr[i]===id2){
         return res.status(200).json({msg:"ok"});
       }
     }
@@ -490,6 +468,32 @@ exports.checkfollowing = async (req, res) => {
     return res.status(400).json({ msg: "error in fetchcheckfollow" });
   }
 }
+// exports.checkfollowing = async (req, res) => {
+//   try {
+//     const {
+//       postid,
+//       userid
+//     } = req.body;
+//     const user = await User.findOne({ _id: userid });
+//     const post = await Post.findOne({ _id: postid });
+//     var m = user.following;
+//     if (m.length == 0) {
+//       return res.status(202).json({ msg: "Does not exist" });
+//     }
+//     else {
+//       for (var i = 0; i < m.length; i++) {
+//         if (m[i] == post.user) {
+//           return res.status(202).json({ msg: "ok" });
+//         }
+//       }
+//       return res.status(202).json({ msg: "Does not exists" });
+//     }
+//   }
+//   catch (error) {
+//     console.log(error);
+//     return res.status(401).json({ msg: "ERROR" })
+//   }
+// }
 exports.deletepost = async (req, res) => {
   try {
     const { postid, userid } = req.body;
@@ -498,14 +502,14 @@ exports.deletepost = async (req, res) => {
     var arr = datas.bookmarks;
     for (var i = 0; i < arr.length; i++) {
       if (arr[i] == postid) {
-        arr.remove(postid);
+        m.splice(i, 1);
       }
     }
     datas.bookmarks = arr;
     arr = datas.posts;
     for (var i = 0; i < arr.length; i++) {
       if (arr[i] == postid) {
-        arr.remove(postid);
+        m.splice(i, 1);
       }
     }
     datas.posts = arr;

@@ -50,12 +50,14 @@ function ProfileOfOtherUser() {
     const data = await getUser(userID);
     setOtherUser(data._doc);
     const sfcr = await checkfollowing(user.id, userID);
+    console.log(sfcr)
+    if(sfcr){
     if (sfcr.msg === "ok") {
       sfc(true);
     }
     else {
       sfc(false);
-    }
+    }}
 
     const datas = await getfollowercount(userID);
     const data2 = await getfollowingcount(userID);
@@ -67,6 +69,7 @@ function ProfileOfOtherUser() {
     try {
       const data = await startfollow(user.id, otherUser._id);
       sfc(true);
+      // console.log(data);
       window.location.reload();
     } catch (error) {
       console.log("error in following")
@@ -102,7 +105,7 @@ function ProfileOfOtherUser() {
           />
           <span className="aboutn">{otherUser.name}</span>
         </div>
-        <div className="user_about">{otherUser?.about}</div>
+        <div className="user_about marg">{otherUser?.about}</div>
       </div>
       
       {!user?

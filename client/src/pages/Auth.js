@@ -36,13 +36,15 @@ function Auth() {
   };
 
   const handleSubmit = async() => {
+    var temail=email.toLowerCase()
+
     if (state === "Log In") {
       try {
-        if (!email || !password) {
+        if (!temail || !password) {
           setError('All feilds are required !')
         return;
       }
-      const data=await checkifverify(email);
+      const data=await checkifverify(temail);
       console.log(data,"fioenc");
       if(data.msg==="ok"){
 
@@ -62,21 +64,22 @@ function Auth() {
     }
       logIn();
     } else {
-      if (!name || !email || !password) {
+      if (!name || !temail || !password) {
         setError('All feilds are required !')
         return;
       }
       if(vo===false){
         setError('An OTP has been send to your mail for verification')
-        const datas=await sendmail(email,name);
+        const datas=await sendmail(temail,name);
         scs(true);
       }
     }
   };
   const checkotp=async()=>{
     try {
-      const data=await checkotpv(email,otpv);
-      
+    var temail=email.toLowerCase()
+
+      const data=await checkotpv(temail,otpv);
     } catch (error) {
       setError('An Error Occurred')
       console.log("cannot verify otp")
@@ -84,10 +87,12 @@ function Auth() {
   }
   const logIn = async () => {
     try {
+    var temail=email.toLowerCase()
+      
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/login`,
         {
-          email,
+          temail,
           password,
         }
       );
@@ -105,11 +110,12 @@ function Auth() {
 
   const signUp = async () => {
     try {
+    var temail=email.toLowerCase()
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/register`,
         {
           name,
-          email,
+          temail,
           password,
         }
       );
@@ -128,7 +134,8 @@ function Auth() {
   };
 const verifyOTP=async()=>{
   try {
-    const data=await checkotpv(email,otpv);
+    var temail=email.toLowerCase()
+    const data=await checkotpv(temail,otpv);
     if(data.msg==='ok'){
       setError("OTP Matched");
       signUp();

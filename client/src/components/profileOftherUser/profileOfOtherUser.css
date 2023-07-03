@@ -57,6 +57,21 @@
     .user_about{
         margin-top:280px;
     }
+    .marg{
+        margin-top:300px;
+    }
+}
+@media screen and (max-width:440px) {
+    
+    .aboutn{
+        margin-top:400px;
+    }
+    .user_about{
+        margin-top:280px;
+    }
+    .marg{
+        margin-top:350px;
+    }
 }
 
 .imgpro {

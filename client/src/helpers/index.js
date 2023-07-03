@@ -3,43 +3,43 @@ import axios from "axios";
 export const clearCookie = (cookieName) => {
   document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 };
-export const checkifverify=async(mail)=>{
+export const checkifverify = async (mail) => {
   try {
     const { data } = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/checkifverify`,{
-        mail
-      }
+      `${process.env.REACT_APP_BACKEND_URL}/checkifverify`, {
+      mail
+    }
     )
     return data;
   } catch (error) {
-    return {msg:"error"};
+    return { msg: "error" };
   }
 }
 
-export const checkotpv=async(mail,otp)=>{
+export const checkotpv = async (mail, otp) => {
   try {
     const { data } = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/checkotpv`,{
-        mail,
-        otp
-      }
+      `${process.env.REACT_APP_BACKEND_URL}/checkotpv`, {
+      mail,
+      otp
+    }
     )
     return data;
   } catch (error) {
-    return {msg:"error in sending mail"};
+    return { msg: "error in sending mail" };
   }
 }
-export const sendmail=async(mail,name)=>{
+export const sendmail = async (mail, name) => {
   try {
     const { data } = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}/sendmail`,{
-        mail,
-        name
-      }
+      `${process.env.REACT_APP_BACKEND_URL}/sendmail`, {
+      mail,
+      name
+    }
     )
     return data;
   } catch (error) {
-    return {msg:"error in sending mail"};
+    return { msg: "error in sending mail" };
   }
 }
 export const uplaodImages = async (formData, token = null) => {
@@ -299,7 +299,7 @@ export const fetchfollowing = async (id) => {
     return;
   }
 }
-export const startfollow = async (id,id2) => {
+export const startfollow = async (id, id2) => {
   try {
     var { data } = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/startfollow`, {
@@ -313,7 +313,7 @@ export const startfollow = async (id,id2) => {
     return;
   }
 }
-export const unfollow = async (id,id2) => {
+export const unfollow = async (id, id2) => {
   try {
     var { data } = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/unfollow`, {
@@ -327,7 +327,7 @@ export const unfollow = async (id,id2) => {
     return;
   }
 }
-export const checkfollowing = async (id,id2) => {
+export const checkfollowing = async (id, id2) => {
   try {
     var { data } = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/checkfollow`, {
