@@ -72,6 +72,7 @@ exports.register = async (req, res) => {
       name,
       email,
       password: hashed_password,
+      verify:true
     }).save();
     // console.log("999");
     const token = generateToken({ id: user._id.toString() }, "15d");
@@ -83,7 +84,7 @@ exports.register = async (req, res) => {
       message: "Register Success !",
     });
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     return res.status(500).json({ message: error.message });
   }
 };

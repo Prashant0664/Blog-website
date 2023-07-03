@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../helpers";
 import { toast, Toaster, ToastBar } from 'react-hot-toast';
-
+import { useNavigate } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import {
@@ -27,7 +27,7 @@ import {
 } from "../../helpers";
 
 function Article({ post }) {
-
+  const navigate = useNavigate();
   const [dbPic, setDbPic] = useState("");
   const [sc, sfc] = useState(true);
   const [dbname, setdbname] = useState("");
@@ -61,26 +61,27 @@ function Article({ post }) {
   useEffect(() => {
     const fetchMyProfile = async () => {
       try {
-        if(!post.user.name){
-          const prof=await fetchprof(post.user);
-          post.user=prof
-          post.user={
-            picture:prof.msg.picture,
-            name:prof.msg.name,
-            _id:prof.msg._id,
-            about:prof.msg.about
+        if (!post.user.name) {
+          const prof = await fetchprof(post.user);
+          post.user = prof
+          post.user = {
+            picture: prof.msg.picture,
+            name: prof.msg.name,
+            _id: prof.msg._id,
+            about: prof.msg.about
           }
         }
-        const sfcr=await checkfollowing(user.id,post.user._id);
-        if(sfcr.msg==="ok"){
+        if(user){const sfcr = await checkfollowing(user.id, post.user._id);
+        if (sfcr.msg === "ok") {
           sfc(true);
         }
-        else{
+        else {
           sfc(false);
-        }
+        }}
         const myprofile = await getUser(user.id);
         setDbPic(myprofile._doc.picture);
         setdbname(myprofile._doc.name);
+        if(user){
         const data = await checkbookmark(
           post._id,
           user.id
@@ -91,7 +92,7 @@ function Article({ post }) {
         }
         else {
           console.log("unable to fetch bookmarks")
-        }
+        }}
       } catch (error) { }
     };
     fetchMyProfile();
@@ -206,17 +207,17 @@ function Article({ post }) {
       console.log(error);
     }
   }
-  const startfollowfun=async()=>{
+  const startfollowfun = async () => {
     try {
-      const data=await startfollow(user.id,post.user._id);
+      const data = await startfollow(user.id, post.user._id);
       sfc(true);
     } catch (error) {
       console.log("error in following")
     }
   }
-  const unfollowfun=async()=>{
+  const unfollowfun = async () => {
     try {
-      const data=await unfollow(user.id,post.user._id);
+      const data = await unfollow(user.id, post.user._id);
       sfc(false);
 
     } catch (error) {
@@ -224,7 +225,7 @@ function Article({ post }) {
       console.log("error in unfollowing")
     }
   }
-// console.log(post);
+  // console.log(post);
   return (
     <>
       <div className="article_wrapper" id="123k">
@@ -235,20 +236,79 @@ function Article({ post }) {
             </div>
             <div className="user_side">
               <span className="userni">
+                {!user?
+                <Link to={`/auth`}>
+                {post.user.name}
+              </Link>
+                :
                 <Link to={`/ProfileRedirect/${post.user._id}`}>
                   {post.user.name}
                 </Link>
+                }
               </span>
               <span className="userdi"><p className="userdi">
                 "{post.user.about ? post.user.about : "User"}"
-                </p>
-                </span>
+              </p>
+              </span>
             </div>
-              {!sc?
-                (<div className="followc" onClick={()=>startfollowfun()}>+Follow</div>)
+            {!user ?
+              <div className="kbj" onClick={() => { navigate("/auth") }}>Can't follow?</div>
               :
-                (<div className="followc" onClick={()=>unfollowfun()}>Following</div>)
-              }
+              <>
+                {!sc ?
+                  (<div className="followc" onClick={() => startfollowfun()}>+Follow</div>)
+                  :
+                  (<div className="followc" onClick={() => unfollowfun()}>Following</div>)
+                }
+              </>
+            }
+            {!user ?
+            <div className="downloadi">
+            <BsDownload className="sizf" size={25} onClick={()=>navigate("/auth")} />
+            {book ?
+              <BsFillBookmarkFill size={25} className="sizf"
+              onClick={()=>navigate("/auth")} />
+              : <CiBookmark className={`sizf`} size={25} onClick={()=>navigate("/auth")}
+              />}
+
+            <div className="flex">
+              <BsThreeDotsVertical className="sizf" size={25} onMouseLeave={() => {
+                showmenu(false)
+              }} onMouseOver={() => { showmenu(true); }} />
+              <div className={menus ? 'menus' : `hidden`} onMouseOver={() => { showmenu(true); }}
+                onMouseLeave={() => {
+                  showmenu(false)
+                }}>
+                <Popup trigger={<button className="buttonr">
+                  <div className="menubox">
+                    {reportedata}
+                  </div>
+                </button>} modal>
+                  <div className="modelbox">
+                    <h1>Report</h1>
+                    <hr />
+                    <div className="myclassr">
+                      <form className="myformclassr">
+                        <input
+                          className="formi"
+                          placeholder="Enter reason of report here link copyright issue etc. (with detail if possible)"
+                          type="text"
+                          onChange={(e) => { rform(e.target.value) }}
+                          value={formr}
+                        />
+                        <button onClick={()=>navigate("/auth")}>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </Popup>
+              </div>
+            </div>
+            {/* <Popup trigger={<button> Trigger</button>} position="right center">
+              <div>Popup content here !!</div>
+            </Popup> */}
+
+          </div>
+            :
             <div className="downloadi">
               <BsDownload className="sizf" size={25} onClick={() => { handleDown() }} />
               {book ?
@@ -258,11 +318,12 @@ function Article({ post }) {
                   setbookmark();
                 }}
                 />}
+
               <div className="flex">
                 <BsThreeDotsVertical className="sizf" size={25} onMouseLeave={() => {
                   showmenu(false)
                 }} onMouseOver={() => { showmenu(true); }} />
-                <div className={menus ? 'menus' : `hidden`} onMouseOver={() => { showmenu(true);}}
+                <div className={menus ? 'menus' : `hidden`} onMouseOver={() => { showmenu(true); }}
                   onMouseLeave={() => {
                     showmenu(false)
                   }}>
@@ -295,6 +356,8 @@ function Article({ post }) {
               </Popup> */}
 
             </div>
+            }
+            
           </div>
           <div className="article_title" >{post.title}</div>
           <span className="post_date">

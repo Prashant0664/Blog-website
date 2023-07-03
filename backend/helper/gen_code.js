@@ -8,5 +8,4 @@ function generateCode(length) {
 
   return code;
 }
-
 module.exports = generateCode;

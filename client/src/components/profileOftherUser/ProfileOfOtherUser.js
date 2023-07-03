@@ -2,6 +2,7 @@ import axios from "axios";
 import "./profileOfOtherUser.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getUser,
   bookmark,
@@ -31,6 +32,7 @@ function ProfileOfOtherUser() {
   const { user } = useSelector((state) => ({ ...state }));
   const [otherUser, setOtherUser] = useState({});
   const [sc, sfc] = useState(true);
+  const navigate = useNavigate();
 
   const [folc, setfollc] = useState(0);
   const [folcd, setfollcd] = useState(0);
@@ -39,6 +41,12 @@ function ProfileOfOtherUser() {
   }, []);
 
   const userData = async () => {
+
+    if(userID===user.id){
+      // const navigateToHome = () => {
+        navigate("/profile");
+      // };
+    }
     const data = await getUser(userID);
     setOtherUser(data._doc);
     const sfcr = await checkfollowing(user.id, userID);
@@ -96,11 +104,19 @@ function ProfileOfOtherUser() {
         </div>
         <div className="user_about">{otherUser?.about}</div>
       </div>
-      {!sc ?
-        (<div className="followc cent" onClick={() => startfollowfun()}>+FOLLOW</div>)
+      
+      {!user?
+      <div className="followc cent" onClick={() => navigate("/auth")}>+FOLLOW</div>
+      :
+      <>
+      {!sc?
+        <div className="followc cent" onClick={() => startfollowfun()}>+FOLLOW</div>
         :
         (<div className="followc cent" onClick={() => unfollowfun()}>FOLLOWING</div>)
       }
+      </>}
+
+
       <div className="follpage">
         <div className="following">
           Following: {folcd}

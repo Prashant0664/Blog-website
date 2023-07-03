@@ -120,7 +120,7 @@ function Navbar({ postpage }) {
         </div>
       ) : (
         <div className="links">
-          <Link className="write" to="/write">
+          <Link className="write" to="/auth">
             <BsPencilSquare className="" />
             <span>Add</span>
           </Link>

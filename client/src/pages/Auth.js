@@ -7,15 +7,20 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { } from "react-router-dom";
 import Cookies from "js-cookie";
-
+import {
+  checkifverify,
+  sendmail,
+  checkotpv
+} from "../helpers/index"
 function Auth() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [state, setState] = useState("Log In");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
-
-  
+  const [otpv, cotpv] = useState("");
+  const [vo, svo] = useState(false);
+  const [cs, scs] = useState("");
   const userInfos = {
     email: "",
     password: "",
@@ -30,23 +35,53 @@ function Auth() {
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if (state === "Log In") {
-
-      if (!email || !password) {
-        setError('All feilds are required !')
+      try {
+        if (!email || !password) {
+          setError('All feilds are required !')
         return;
       }
+      const data=await checkifverify(email);
+      console.log(data,"fioenc");
+      if(data.msg==="ok"){
+
+      }
+      else if(
+        data.msg==='ne'
+      ){
+        setError("Please Sign Up First ");
+        return;
+      }
+      else{
+        setError("Please Sign up and Verify Your Email ");
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
       logIn();
     } else {
       if (!name || !email || !password) {
         setError('All feilds are required !')
         return;
       }
-      signUp();
+      if(vo===false){
+        setError('An OTP has been send to your mail for verification')
+        const datas=await sendmail(email,name);
+        scs(true);
+      }
     }
   };
-
+  const checkotp=async()=>{
+    try {
+      const data=await checkotpv(email,otpv);
+      
+    } catch (error) {
+      setError('An Error Occurred')
+      console.log("cannot verify otp")
+    }
+  }
   const logIn = async () => {
     try {
       const { data } = await axios.post(
@@ -91,7 +126,21 @@ function Auth() {
       setError(error.response.data.message);
     }
   };
-
+const verifyOTP=async()=>{
+  try {
+    const data=await checkotpv(email,otpv);
+    if(data.msg==='ok'){
+      setError("OTP Matched");
+      signUp();
+    }
+    else{
+      setError("OTP do not match");
+    }
+  } catch (error) {
+    setError("ERROR OCCURRED!");
+    console.log("ERROR in matching")
+  }
+}
   const signUpWithGoogle = () => {
     window.open(`${process.env.REACT_APP_BACKEND_URL}/auth/google`, "_self");
 
@@ -189,6 +238,17 @@ function Auth() {
               onChange={handleRegisterChange}
             />
           </div>
+          {(cs)&&state==="Sign Up"?
+          <div className="input">
+          <input
+              type="number"
+              name="OTP"
+              placeholder="OTP"
+              value={otpv}
+              onChange={(e)=>{cotpv(e.target.value)}}
+            />
+          </div>
+        :<></>}
         </form>
         {error && <span className="errorValidation" >{error}</span>}
         {success && <span className="RegisterSuccess" >{success}</span>}
@@ -202,9 +262,15 @@ function Auth() {
             <Link to="/resetPassword">Don't remember your password?</Link>
           </div>
         )}
+        {(cs)&&state==="Sign Up"?
+        <div className="footer" onClick={verifyOTP}>
+          {state === "Sign Up" ? "Verify OTP" : "LOG IN"}
+        </div>
+        :
         <div className="footer" onClick={handleSubmit}>
           {state === "Sign Up" ? "SIGN UP FOR FREE" : "LOG IN"}
         </div>
+        }
       </div>
     </div>
   );

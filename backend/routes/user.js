@@ -22,8 +22,16 @@ const {
   fetchfollowing,
   follow,
   checkfollowing,
-  unfollow
+  unfollow,
+  
+  
 } = require("../controllers/user");
+const {
+  sendmail,
+  checkifverify,
+  verifycode,
+  checkotpv
+} =require("../controllers/verifyemail")
 var passport = require('passport')
 const OAuthStrategy = require('passport-oauth').OAuthStrategy;
 var GoogleStrategy = require('passport-google-oidc');
@@ -34,7 +42,12 @@ const CLIENT_URL = "https://allblogapp-project.vercel.app";
 // app.use(passport.initialize());
 // app.use(passport.session());
 router.post("/register", register);
+router.post("/checkotpv", checkotpv);
+
+router.post("/checkifverify", checkifverify);
 router.post("/login", login);
+router.post("/sendmail", sendmail);
+router.post("/verifycode", verifycode);
 router.put("/uploadprofile", authUser, uploadprofile);
 router.get("/getUser/:userId", getUser);
 router.post("/findOutUser", findOutUser);
