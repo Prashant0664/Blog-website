@@ -72,6 +72,7 @@
 .cent{
     text-align: center;
     cursor: pointer;
+    margin-top:15px;
 }
 .user_wrapper {
     margin: auto;
