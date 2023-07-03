@@ -269,7 +269,6 @@ exports.showbookmark = async (req, res) => {
     return res.status(400).json({ msg: "error" });
   }
 }
-
 exports.showmyposts = async (req, res) => {
   try {
     const { id } = req.body;
@@ -350,7 +349,6 @@ exports.follow = async (req, res) => {
     const { id, id2 } = req.body;
     const user = await User.findById(id);
     const user2 = await User.findById(id2);
-    console.log(user,user2);
 
     var mm=user2.followerscount;
     mm=mm+1;
@@ -413,7 +411,7 @@ exports.unfollow = async (req, res) => {
       mm = 0;
     }
     else {
-      mm = user2.followerscount - 1;
+      mm = mm - 1;
     }
     user2.followerscount=mm;
     user2.save();
