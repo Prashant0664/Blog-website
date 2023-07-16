@@ -23,15 +23,14 @@ const {
   follow,
   checkfollowing,
   unfollow,
-  
-  
+  searchresult
 } = require("../controllers/user");
 const {
   sendmail,
   checkifverify,
   verifycode,
   checkotpv
-} =require("../controllers/verifyemail")
+} = require("../controllers/verifyemail")
 var passport = require('passport')
 const OAuthStrategy = require('passport-oauth').OAuthStrategy;
 var GoogleStrategy = require('passport-google-oidc');
@@ -67,6 +66,7 @@ router.post("/deletepost", deletepost);
 router.post("/fetchfollowing", fetchfollowing);
 router.post("/startfollow", follow);
 router.post("/unfollow", unfollow);
+router.post("/searchresult", searchresult);
 router.post("/checkfollow", checkfollowing);
 
 

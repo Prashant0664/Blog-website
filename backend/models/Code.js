@@ -13,5 +13,5 @@ const codeSchema = new mongoose.Schema({
     required: true,
   },
 });
-
+codeSchema.index({ createdAt: 1 }, { expireAfterSeconds: 1800 });
 module.exports = mongoose.model("Code", codeSchema);

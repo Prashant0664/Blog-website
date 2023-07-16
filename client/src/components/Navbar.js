@@ -13,16 +13,36 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { clearCookie } from "../helpers";
 import { useMediaQuery } from "react-responsive";
-
+import {
+  searchresult
+} from "../helpers/index";
 function Navbar({ postpage }) {
   const view1 = useMediaQuery({ query: "(max-width: 564px)" });
   const view2 = useMediaQuery({ query: "(max-width: 420px)" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchsel, setsearchsel] = useState(true);
+  const [sres, searchf] = useState([]);
+  const [ssw, cssw] = useState(false)
+  const [scontent, cscontent] = useState("")
+
   const navigateToHome = () => {
     navigate("/");
   };
+  const onsearchc = async () => {
+    try {
+      if (scontent === "") {
+        return;
+      }
+      const data = await searchresult(scontent)
+      if (data.msg == []) {
+        return;
+      }
+      searchf(data.msg);
+    } catch (error) {
+      console.log("error in search result");
+    }
+  }
   const { user } = useSelector((state) => ({ ...state }));
   const handleLoad = () => {
     if (user === null || user === undefined) {
@@ -75,6 +95,12 @@ function Navbar({ postpage }) {
 
   return (
     <nav className="navbar">
+      {ssw ?
+        <div className="btnsrch" onClick={() => { cssw(false); }}>
+
+        </div>
+        :
+        <></>}
       <div className="rocket" onClick={() => navigateToHome()}>
         <div className="img">
           <img src="/OIG.svg" alt="HOME" />
@@ -83,10 +109,43 @@ function Navbar({ postpage }) {
       </div>
       <div className="search">
         <div className="search_wrap">
-          <input className="inputnav" type="text" name="" id="" placeholder="Search..." />
-
+          <input className="inputnav" onClick={() => { cssw(true) }} onChange={(e) => { cscontent(e.target.value); cssw(true); onsearchc() }} type="text" name="" value={scontent} id="" placeholder="Search..." />
+          {ssw ?
+            <div className="search-result">
+              <ul className="search-list">
+                {sres.map((i) => {
+                  return (
+                    <li className="lis-item noun">
+                      {user ?
+                        <>
+                          <img className="imgscp" src={i.pic} alt="" />
+                          <Link className="noun" to={`/ProfileRedirect/${i.id}`}>
+                            <p className="blackclr">
+                              {i.name}
+                            </p>
+                          </Link>
+                        </>
+                        :
+                        <>
+                          <img className="imgscp" src={i.pic} alt="" />
+                          <Link className="noun" to={`/auth`}>
+                            <p className="blackclr">
+                              {i.name}
+                            </p>
+                          </Link>
+                        </>
+                      }
+                    </li>
+                  )
+                })}
+                <li className=" lis-item">
+                </li>
+              </ul>
+            </div>
+            : <></>
+          }
         </div>
-        <div className="imagesearch">
+        <div className="imagesearch" onClick={() => { cssw(true); onsearchc() }}>
           <BsSearch size={view1 ? 15 : 20} />
           {view2 ? (
             <div className="searchsel" onClick={select_action}>

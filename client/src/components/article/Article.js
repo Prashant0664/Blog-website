@@ -71,28 +71,31 @@ function Article({ post }) {
             about: prof.msg.about
           }
         }
-        if(user){const sfcr = await checkfollowing(user.id, post.user._id);
-        if (sfcr.msg === "ok") {
-          sfc(true);
+        if (user) {
+          const sfcr = await checkfollowing(user.id, post.user._id);
+          if (sfcr.msg === "ok") {
+            sfc(true);
+          }
+          else {
+            sfc(false);
+          }
         }
-        else {
-          sfc(false);
-        }}
         const myprofile = await getUser(user.id);
         setDbPic(myprofile._doc.picture);
         setdbname(myprofile._doc.name);
-        if(user){
-        const data = await checkbookmark(
-          post._id,
-          user.id
-        )
-        // console.log(data);
-        if (data.msg === 'ok') {
-          setbook(true);
+        if (user) {
+          const data = await checkbookmark(
+            post._id,
+            user.id
+          )
+          // console.log(data);
+          if (data.msg === 'ok') {
+            setbook(true);
+          }
+          else {
+            console.log("unable to fetch bookmarks")
+          }
         }
-        else {
-          console.log("unable to fetch bookmarks")
-        }}
       } catch (error) { }
     };
     fetchMyProfile();
@@ -236,14 +239,14 @@ function Article({ post }) {
             </div>
             <div className="user_side">
               <span className="userni">
-                {!user?
-                <Link to={`/auth`}>
-                {post.user.name}
-              </Link>
-                :
-                <Link to={`/ProfileRedirect/${post.user._id}`}>
-                  {post.user.name}
-                </Link>
+                {!user ?
+                  <Link to={`/auth`}>
+                    {post.user.name}
+                  </Link>
+                  :
+                  <Link to={`/ProfileRedirect/${post.user._id}`}>
+                    {post.user.name}
+                  </Link>
                 }
               </span>
               <span className="userdi"><p className="userdi">
@@ -263,101 +266,101 @@ function Article({ post }) {
               </>
             }
             {!user ?
-            <div className="downloadi">
-            <BsDownload className="sizf" size={25} onClick={()=>navigate("/auth")} />
-            {book ?
-              <BsFillBookmarkFill size={25} className="sizf"
-              onClick={()=>navigate("/auth")} />
-              : <CiBookmark className={`sizf`} size={25} onClick={()=>navigate("/auth")}
-              />}
+              <div className="downloadi">
+                <BsDownload className="sizf" size={25} onClick={() => navigate("/auth")} />
+                {book ?
+                  <BsFillBookmarkFill size={25} className="sizf"
+                    onClick={() => navigate("/auth")} />
+                  : <CiBookmark className={`sizf`} size={25} onClick={() => navigate("/auth")}
+                  />}
 
-            <div className="flex">
-              <BsThreeDotsVertical className="sizf" size={25} onMouseLeave={() => {
-                showmenu(false)
-              }} onMouseOver={() => { showmenu(true); }} />
-              <div className={menus ? 'menus' : `hidden`} onMouseOver={() => { showmenu(true); }}
-                onMouseLeave={() => {
-                  showmenu(false)
-                }}>
-                <Popup trigger={<button className="buttonr">
-                  <div className="menubox">
-                    {reportedata}
+                <div className="flex">
+                  <BsThreeDotsVertical className="sizf" size={25} onMouseLeave={() => {
+                    showmenu(false)
+                  }} onMouseOver={() => { showmenu(true); }} />
+                  <div className={menus ? 'menus' : `hidden`} onMouseOver={() => { showmenu(true); }}
+                    onMouseLeave={() => {
+                      showmenu(false)
+                    }}>
+                    <Popup trigger={<button className="buttonr">
+                      <div className="menubox">
+                        {reportedata}
+                      </div>
+                    </button>} modal>
+                      <div className="modelbox">
+                        <h1>Report</h1>
+                        <hr />
+                        <div className="myclassr">
+                          <form className="myformclassr">
+                            <input
+                              className="formi"
+                              placeholder="Enter reason of report here link copyright issue etc. (with detail if possible)"
+                              type="text"
+                              onChange={(e) => { rform(e.target.value) }}
+                              value={formr}
+                            />
+                            <button onClick={() => navigate("/auth")}>Submit</button>
+                          </form>
+                        </div>
+                      </div>
+                    </Popup>
                   </div>
-                </button>} modal>
-                  <div className="modelbox">
-                    <h1>Report</h1>
-                    <hr />
-                    <div className="myclassr">
-                      <form className="myformclassr">
-                        <input
-                          className="formi"
-                          placeholder="Enter reason of report here link copyright issue etc. (with detail if possible)"
-                          type="text"
-                          onChange={(e) => { rform(e.target.value) }}
-                          value={formr}
-                        />
-                        <button onClick={()=>navigate("/auth")}>Submit</button>
-                      </form>
-                    </div>
-                  </div>
-                </Popup>
-              </div>
-            </div>
-            {/* <Popup trigger={<button> Trigger</button>} position="right center">
+                </div>
+                {/* <Popup trigger={<button> Trigger</button>} position="right center">
               <div>Popup content here !!</div>
             </Popup> */}
 
-          </div>
-            :
-            <div className="downloadi">
-              <BsDownload className="sizf" size={25} onClick={() => { handleDown() }} />
-              {book ?
-                <BsFillBookmarkFill size={25} className="sizf"
-                  onClick={() => { dellbookmarl(); }} />
-                : <CiBookmark className={`sizf`} size={25} onClick={() => {
-                  setbookmark();
-                }}
-                />}
-
-              <div className="flex">
-                <BsThreeDotsVertical className="sizf" size={25} onMouseLeave={() => {
-                  showmenu(false)
-                }} onMouseOver={() => { showmenu(true); }} />
-                <div className={menus ? 'menus' : `hidden`} onMouseOver={() => { showmenu(true); }}
-                  onMouseLeave={() => {
-                    showmenu(false)
-                  }}>
-                  <Popup trigger={<button className="buttonr">
-                    <div className="menubox">
-                      {reportedata}
-                    </div>
-                  </button>} modal>
-                    <div className="modelbox">
-                      <h1>Report</h1>
-                      <hr />
-                      <div className="myclassr">
-                        <form className="myformclassr">
-                          <input
-                            className="formi"
-                            placeholder="Enter reason of report here link copyright issue etc. (with detail if possible)"
-                            type="text"
-                            onChange={(e) => { rform(e.target.value) }}
-                            value={formr}
-                          />
-                          <button onClick={(e) => Reports(e)}>Submit</button>
-                        </form>
-                      </div>
-                    </div>
-                  </Popup>
-                </div>
               </div>
-              {/* <Popup trigger={<button> Trigger</button>} position="right center">
+              :
+              <div className="downloadi">
+                <BsDownload className="sizf" size={25} onClick={() => { handleDown() }} />
+                {book ?
+                  <BsFillBookmarkFill size={25} className="sizf"
+                    onClick={() => { dellbookmarl(); }} />
+                  : <CiBookmark className={`sizf`} size={25} onClick={() => {
+                    setbookmark();
+                  }}
+                  />}
+
+                <div className="flex">
+                  <BsThreeDotsVertical className="sizf" size={25} onMouseLeave={() => {
+                    showmenu(false)
+                  }} onMouseOver={() => { showmenu(true); }} />
+                  <div className={menus ? 'menus' : `hidden`} onMouseOver={() => { showmenu(true); }}
+                    onMouseLeave={() => {
+                      showmenu(false)
+                    }}>
+                    <Popup trigger={<button className="buttonr">
+                      <div className="menubox">
+                        {reportedata}
+                      </div>
+                    </button>} modal>
+                      <div className="modelbox">
+                        <h1>Report</h1>
+                        <hr />
+                        <div className="myclassr">
+                          <form className="myformclassr">
+                            <input
+                              className="formi"
+                              placeholder="Enter reason of report here link copyright issue etc. (with detail if possible)"
+                              type="text"
+                              onChange={(e) => { rform(e.target.value) }}
+                              value={formr}
+                            />
+                            <button onClick={(e) => Reports(e)}>Submit</button>
+                          </form>
+                        </div>
+                      </div>
+                    </Popup>
+                  </div>
+                </div>
+                {/* <Popup trigger={<button> Trigger</button>} position="right center">
                 <div>Popup content here !!</div>
               </Popup> */}
 
-            </div>
+              </div>
             }
-            
+
           </div>
           <div className="article_title" >{post.title}</div>
           <span className="post_date">

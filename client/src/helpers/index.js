@@ -354,6 +354,19 @@ export const showmyposts = async (id) => {
     return;
   }
 }
+export const searchresult = async (id2,) => {
+  try {
+    var { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/searchresult`, {
+      id2
+    }
+    )
+    return data;
+  } catch (error) {
+    console.log("Error in Bookmark", error);
+    return;
+  }
+}
 export const bookmark = async (postid, userid) => {
   try {
     var { data } = await axios.post(

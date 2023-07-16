@@ -72,7 +72,7 @@ exports.register = async (req, res) => {
       name,
       email,
       password: hashed_password,
-      verify:true
+      verify: true
     }).save();
     // console.log("999");
     const token = generateToken({ id: user._id.toString() }, "15d");
@@ -249,7 +249,7 @@ exports.showmyposts = async (req, res) => {
   try {
     const { id } = req.body;
     const data = await User.findById(id)
-    
+
     var arr = data.posts;
     var respon = [];
     var img = "";
@@ -262,7 +262,7 @@ exports.showmyposts = async (req, res) => {
     // console.log(99,arr.length);
     for (var i = 0; i < arr.length; i++) {
       var pd = await Post.findById(arr[i]);
-      if(!pd){
+      if (!pd) {
         continue;
       }
       img = pd.image;
@@ -326,9 +326,9 @@ exports.follow = async (req, res) => {
     const user = await User.findById(id);
     const user2 = await User.findById(id2);
 
-    var mm=user2.followerscount;
-    mm=mm+1;
-    user2.followerscount =mm;
+    var mm = user2.followerscount;
+    mm = mm + 1;
+    user2.followerscount = mm;
     user2.save();
     var f = 0;
     var m = user.following;
@@ -343,10 +343,10 @@ exports.follow = async (req, res) => {
           m.push(id2);
         }
       }
-      if(!f){
+      if (!f) {
         m.push(id2);
       }
-      
+
       user.following = m;
     }
     user.followingcount = user.followingcount + 1;
@@ -392,7 +392,7 @@ exports.unfollow = async (req, res) => {
     else {
       mm = mm - 1;
     }
-    user2.followerscount=mm;
+    user2.followerscount = mm;
     user2.save();
     var f = 0;
     var m = user.following;
@@ -409,10 +409,10 @@ exports.unfollow = async (req, res) => {
       }
       user.following = m;
     }
-    var f=user.followingcount;
-    f=f-1;
-    if(f<0){
-      f=0;
+    var f = user.followingcount;
+    f = f - 1;
+    if (f < 0) {
+      f = 0;
     }
     user.followingcount = f;
     user.save();
@@ -448,17 +448,42 @@ exports.fetchfollowing = async (req, res) => {
     return res.status(400).json({ msg: "error in fetchfollow" });
   }
 }
+exports.searchresult = async (req, res) => {
+  try {
+    const { id2 } = req.body;
+    const data = await User.find({ "name": { $regex: '^' + `${id2}`, $options: 'i' } });
+    if (data.length === 0) {
+      return res.status(200).json({ msg: [] });
+    }
+    var names = [];
+    for (var i = 0; i < data.length; i++) {
+      var name = data[i].name;
+      var id = data[i]._id;
+      var pic = data[i].picture;
+      names.push({
+        name: name,
+        id: id,
+        pic: pic
+      })
+    }
+    return res.status(200).json({ msg: names });
+  } catch (error) {
+    console.log("error in search");
+    return res.status(400).json({ msg: "error in search" });
+  }
+}
+
 exports.checkfollowing = async (req, res) => {
   try {
-    const { id,id2} = req.body;
+    const { id, id2 } = req.body;
     const user = await User.findById(id);
     const arr = user.following;
-    if(arr.length==0){
+    if (arr.length == 0) {
       return res.status(200).json({ msg: "not" });
     }
     for (var i = 0; i < arr.length; i++) {
-      if(arr[i]===id2){
-        return res.status(200).json({msg:"ok"});
+      if (arr[i] === id2) {
+        return res.status(200).json({ msg: "ok" });
       }
     }
     return res.status(200).json({ msg: "not" });
