@@ -27,14 +27,12 @@ exports.sendreportmails = async (req, res) => {
     var namer = reporter.name
     var namerd = reported.name
     try {
-      // console.log(999)
       // console.log(emailr,emailrd,namer,namerd,reason,pid);
       sendReportMail(emailr, emailrd, namer, namerd, reason, pid);
     } catch (error) {
       console.log("error in sending mails")
     }
     return res.status(200).json({ msg: "ok" });
-    // sendReportMail(postid,useris,name1,);
   } catch (error) {
     console.log(error);
     return res.status(400).json({ msg: "Bad Request" })
@@ -42,39 +40,37 @@ exports.sendreportmails = async (req, res) => {
 }
 exports.register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, temail, password } = req.body;
     if (!validateLength(name, 6, 15)) {
       return res
-        .status(400)
-        .json({ message: "Enter name between 6 to 15 characters !" });
+      .status(400)
+      .json({ message: "Enter name between 6 to 15 characters !" });
     }
-    if (!validateEmail(email)) {
+    if (!validateEmail(temail)) {
       return res.status(400).json({ message: "Please enter a valid email !" });
     }
-
+    
     if (!validateLength(password, 6, 15)) {
       return res
-        .status(400)
-        .json({ message: "Enter password between 6 to 15 characters !" });
+      .status(400)
+      .json({ message: "Enter password between 6 to 15 characters !" });
     }
-
-    const check = await User.findOne({ email });
+    
+    const check = await User.findOne({ temail });
     if (check) {
       return res.status(400).json({
         message:
-          "This email already exists,try again with a different email",
+        "This email already exists,try again with a different email",
       });
     }
-
+    
     const hashed_password = await bcrypt.hash(password, 10);
-
     const user = await new User({
-      name,
-      email,
+      name:name,
+      email:temail,
       password: hashed_password,
       verify: true
     }).save();
-    // console.log("999");
     const token = generateToken({ id: user._id.toString() }, "15d");
     res.send({
       id: user._id,

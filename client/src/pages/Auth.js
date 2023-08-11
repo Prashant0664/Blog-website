@@ -118,7 +118,7 @@ function Auth() {
           temail,
           password,
         }
-      );
+        );
 
       setError('')
       setSuccess(data.message)
