@@ -545,15 +545,14 @@ exports.deletepost = async (req, res) => {
 }
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const { temail, password } = req.body;
+    const user = await User.findOne({ email:temail });
     if (!user) {
       return res.status(400).json({
         message:
           "the email you entered is not registered.",
       });
     }
-    // console.log("<<<<>>>>");
     const check = await bcrypt.compare(password, user.password);
     if (!check) {
       return res.status(400).json({
@@ -561,7 +560,6 @@ exports.login = async (req, res) => {
       });
     }
     const token = generateToken({ id: user._id.toString() }, "15d");
-    // console.log("----");
     res.send({
       id: user._id,
       name: user.name,
