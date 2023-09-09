@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
+- [Demo](#demo)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
@@ -17,23 +18,29 @@
 Welcome to the Blogging Website project! This is a web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to create and manage their blogs, post projects, follow other users, comment on blogs, save content, bookmark blogs, and more. The application also includes features such as email verification for user registration and Redux for state management.
 
 ---
+## Demo
+
+https://github.com/Prashant0664/Blog-website/assets/98750053/d762e07b-2282-4a9e-9dde-30f5a322c6a1
+
+---
+
 
 ## Features
 Here are some of the key features of this Blogging Website:
 
-- **User Authentication and Profiles:** Users can create and manage their profiles, with email verification for account security.
+🔥 **User Authentication and Profiles:** Users can create and manage their profiles, with email verification for account security.
 
-- **Blogging:** Users can create and publish their blogs with rich text formatting.
+🔥 **Blogging:** Users can create and publish their blogs with rich text formatting.
 
-- **Project Posting:** Users can share and showcase their projects on their profile.
+🔥 **Project Posting:** Users can share and showcase their projects on their profile.
 
-- **Social Features:** Users can follow other users, comment on blogs, and save/bookmark content they like.
+🔥 **Social Features:** Users can follow other users, comment on blogs, and save/bookmark content they like.
 
-- **Responsive Design:** The website is designed to work seamlessly on various screen sizes and devices.
+🔥 **Responsive Design:** The website is designed to work seamlessly on various screen sizes and devices.
 
-- **Secure:** The application follows best practices for security, including password hashing and user authentication.
+🔥 **Secure:** The application follows best practices for security, including password hashing and user authentication.
 
-- **Content Management:** Users can easily edit, delete, or download their own posts.
+🔥 **Content Management:** Users can easily edit, delete, or download their own posts.
 
 ---
 
@@ -41,15 +48,15 @@ Here are some of the key features of this Blogging Website:
 The Blogging Website is built using the following technologies:
 
 - **MERN Stack:**
-  - MongoDB: A NoSQL database used to store user data, blogs, and other application data.
-  - Express.js: A Node.js web application framework used for building the server.
-  - React.js: A JavaScript library for building the user interface.
-  - Node.js: A JavaScript runtime used for server-side code execution.
+  <br/>
+  💫 MongoDB: A NoSQL database used to store user data, blogs, and other application data. <br/>
+  💫 Express.js: A Node.js web application framework used for building the server.<br/>
+  💫 React.js: A JavaScript library for building the user interface.<br/>
+  💫 Node.js: A JavaScript runtime used for server-side code execution.<br/>
 
-- **Additional Technologies:**
-  - Redux: Used for state management within the React application.
-  - Nodemailer: Used for email verification and sending email notifications.
-  - AngularJS: Used for specific frontend functionalities.
+- **Additional Technologies:**<br/>
+  💫 Redux: Used for state management within the React application.<br/>
+  💫 Nodemailer: Used for email verification and sending email notifications.<br/>
 
 ---
 
@@ -65,12 +72,12 @@ Before you begin, make sure you have the following installed on your system:
 ### Installation
 1. Clone this GitHub repository to your local machine:
    ```
-   git clone https://github.com/your-username/blogging-website.git
+   git clone https://github.com/prashant0664/blog-website.git
    ```
 
 2. Change into the project directory:
    ```
-   cd blogging-website
+   cd blog-website
    ```
 
 3. Install the backend dependencies:
@@ -81,7 +88,7 @@ Before you begin, make sure you have the following installed on your system:
 
 4. Install the frontend dependencies:
    ```
-   cd ../frontend
+   cd ../client
    npm install
    ```
 
@@ -95,7 +102,7 @@ Before you begin, make sure you have the following installed on your system:
 
 7. Start the frontend development server:
    ```
-   cd ../frontend
+   cd ../client
    npm start
    ```
 
@@ -115,6 +122,8 @@ Contributions to this project are welcome! If you'd like to contribute, please f
 3. Make your changes and commit them with clear and descriptive commit messages.
 4. Push your changes to your fork.
 5. Submit a pull request to the main repository.
+<br/>
+Contact: prashant201103@gmail.com
 
 ---
 
