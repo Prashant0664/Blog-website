@@ -1,5 +1,5 @@
 # Blogging Website
-*For **Hacktoberfest** refer Contributing.md* <br/>
+*For **Hacktoberfest** please refer [Contributing.md](https://github.com/Prashant0664/Blog-website/blob/master/CONTRIBUTING.md)* <br/>
 
 ## Table of Contents
 - [Introduction](#introduction)
