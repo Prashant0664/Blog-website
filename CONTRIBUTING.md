@@ -2,67 +2,61 @@
 
 **[hacktoberfest](https://hacktoberfest.digitalocean.com/). If you don't know where to start, feel free to watch the videos linked below, and read the contribution rules. Happy Contributing!**
 
-P.S. Star ⭐ and Share this repository, if you had fun!! 😍
-<!--
+P.S. Star⭐️ this repo or follow [github](https://github.com/Prashant0664/) if you find this project interesting😁😍! <br/>
+
 # 📌 Videos 📽️:
 
 - [Hacktoberfest Intro](https://youtu.be/K5nzruz1FpA?si=ehf0mrrJ8xsGvxNe)
-- [How to pull request [Overview]]()
+- [Other Official Resources](https://hacktoberfest.com/participation/#beginner-resources)
 
-# Contribution Rules 📌:
+## Contributors
+Here’s what you need to know to participate and complete Hacktoberfest:
+- Register anytime between september 26 and october 31
 
+- Pull requests can be made in any github or gitlab hosted project that’s participating in hacktoberfest (look for the “hacktoberfest” topic)
+
+- Project maintainers must accept your pull/merge requests for them to count toward your total
+
+- Have 4 pull/merge requests accepted between october 1 and october 31 to complete hacktoberfest
 
 ## Mandatory Step :
 - You have to star ⭐ this repository
 
 ## Getting Started 🚀:
 
-- Fork this repo (button on top)
-- Clone on your local machine
-
-Open terminal
+1. Complete the registartion over https://hacktoberfest.com/
+2. Fork this repository.
+3. Clone on your local machine.
+```bash
+git clone https://github.com/<your github username>/Blog-website.git
 ```
-git clone https://github.com/TechHack3/Hacktoberfest2023.git
+4. Navigate to the project directory.
+```bash
+cd Blog-website
 ```
-
-- Navigate to project directory.
-  
-```
-cd Hacktoberfest2023
-```
-
-
-- Create a new Branch
-
-```
+5. Create a new branch.
+```bash
 git checkout -b my-new-branch
 ```
-
-- To Add your File to our repo
-
-```
+6. Add changes (system installation has been explained in README.md with detail
+7. Add your contribution.
+```bash
 git add .
 ```
-
-- Commit your changes.
-
-```
+8. Commit your changes.
+```bash
 git commit -m "Relevant message"
 ```
-
-- Then push 
-
-```
+9. Push your changes.
+```bash
 git push origin my-new-branch
 ```
+10. Create a new pull request from your forked repository.
 
-- Create a new pull request from your forked repository
+*Congratulations 🎉 you just made a pull request!*
 
+#
 <br>
-
-## Add your name in contributors List
-
-`contributors/contributorsList.js`
 
 ## Avoid Conflicts {Syncing your fork}
 
@@ -70,7 +64,7 @@ An easy way to avoid conflicts is to add an 'upstream' for your git repo, as oth
 
 
 ```
-git remote add upstream https://github.com/TechHack3/Hacktoberfest2023
+git remote add upstream https://github.com/Prashant0664/Blog-website.git
 ```
 
 
@@ -84,24 +78,10 @@ To pull any new changes from your parent repo simply run
 git merge upstream/master
 ```
 
-# FAQs (Frequently Asked Questions)
+<h3>🛡 Notice</h3>
+<p>⚔️ All contributors who have followed above rules correctly will meet merge pull request successfully.</p>
+<p>⚔️ For any further issues, you can contact me in the comments</p>
+<p>⚔️ Always make more than 4 total pull requests for hacktoberfest for safer side.</p>
+<br/>
+<h2>🖥️ Happy Coding 🔥 Happy Hacking...</h2>
 
-- Who all can contribute?
-  - Anyone with a GitHub account and who is signed up for
-[hacktoberfest](https://hacktoberfest.digitalocean.com/) :)
-- Are you getting paid for this?
-  - Sadly no. We do it for fun, education, and glory.
-- How many pull requests (PR) must be made, if I want to get an awesome t-shirt from Hacktoberfest 2022?
-  - 4
-- How do I track my progress to get an awesome shirt from Hacktoberfest 2022?
-  - [go to:](https://hacktoberfest.digitalocean.com/profile/). (Check Out Your Own Stats at Right Top)
-- What is the duration of Hacktoberfest 2023?
-  - It is from 1st october to 31st october 2023
-- What is the event for?
-  - For the open source community engagement and learn how to contribute to open source.
-
--->
-
-
-###### We will do our best to merge as much as possible from everyone. However, time is limited <3
-<br>
