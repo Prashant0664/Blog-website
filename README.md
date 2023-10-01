@@ -120,7 +120,7 @@ You can now use the Blogging Website to create, share, and discover blogs, proje
 Contributions to this project are welcome! If you'd like to contribute, please follow these steps:
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them with clear and descriptive commit messages. (Installation and Setup has been Explained in [Contribution](#contributing) )
+3. Make your changes and commit them with clear and descriptive commit messages. (Installation and Setup has been Explained in [Getting-Started](#getting-started) )
 4. Push your changes to your fork.
 5. Submit a pull request to the main repository.
 <br/>
