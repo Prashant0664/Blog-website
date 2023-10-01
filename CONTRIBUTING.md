@@ -1,50 +1,107 @@
-/*
+# Hacktoberfest2023
+
+**[hacktoberfest](https://hacktoberfest.digitalocean.com/). If you don't know where to start, feel free to watch the videos linked below, and read the contribution rules. Happy Contributing!**
+
+P.S. Star ⭐ and Share this repository, if you had fun!! 😍
 <!--
-# Contributing to [Project Name]
+# 📌 Videos 📽️:
 
-Thank you for your interest in contributing to [Project Name]! We welcome contributions from the community to make our project better. Before you get started, please take a moment to read the following guidelines.
+- [Hacktoberfest Intro](https://youtu.be/K5nzruz1FpA?si=ehf0mrrJ8xsGvxNe)
+- [How to pull request [Overview]]()
 
-## Table of Contents
-- [Code of Conduct](#code-of-conduct)
-- [How to Contribute](#how-to-contribute)
-  - [Reporting Bugs](#reporting-bugs)
-  - [Suggesting Enhancements](#suggesting-enhancements)
-  - [Contributing Code](#contributing-code)
-- [Development Setup](#development-setup)
-- [Pull Request Guidelines](#pull-request-guidelines)
-- [License](#license)
+# Contribution Rules 📌:
 
-## Code of Conduct
 
-We expect all contributors to adhere to our [Code of Conduct](CODE_OF_CONDUCT.md). Please read it thoroughly and make sure you understand and follow its principles.
+## Mandatory Step :
+- You have to star ⭐ this repository
 
-## How to Contribute
+## Getting Started 🚀:
 
-### Reporting Bugs
+- Fork this repo (button on top)
+- Clone on your local machine
 
-If you find a bug in the project, please help us by [creating an issue](https://github.com/your_username/your_project/issues/new) on our GitHub repository. When reporting a bug, please provide as much detail as possible, including:
+Open terminal
+```
+git clone https://github.com/TechHack3/Hacktoberfest2023.git
+```
 
-- A clear and descriptive title.
-- A description of the issue.
-- Steps to reproduce the issue.
-- Information about your environment (e.g., operating system, browser, version).
+- Navigate to project directory.
+  
+```
+cd Hacktoberfest2023
+```
 
-### Suggesting Enhancements
 
-If you have an idea for an enhancement or a new feature, please submit an issue on our [GitHub repository](https://github.com/your_username/your_project/issues/new) with the following information:
+- Create a new Branch
 
-- A clear and descriptive title.
-- A detailed description of the proposed enhancement.
-- Any relevant design or implementation details.
+```
+git checkout -b my-new-branch
+```
 
-### Contributing Code
+- To Add your File to our repo
 
-We welcome code contributions! To contribute code to the project, follow these steps:
+```
+git add .
+```
 
-1. Fork the repository on GitHub.
-2. Clone your fork to your local machine.
+- Commit your changes.
 
-```bash
-git clone https://github.com/your_username/your_project.git
+```
+git commit -m "Relevant message"
+```
+
+- Then push 
+
+```
+git push origin my-new-branch
+```
+
+- Create a new pull request from your forked repository
+
+<br>
+
+## Add your name in contributors List
+
+`contributors/contributorsList.js`
+
+## Avoid Conflicts {Syncing your fork}
+
+An easy way to avoid conflicts is to add an 'upstream' for your git repo, as other PR's may be merged while you're working on your branch/fork.   
+
+
+```
+git remote add upstream https://github.com/TechHack3/Hacktoberfest2023
+```
+
+
+You can verify that the new remote has been added by typing
+```
+git remote -v
+```
+
+To pull any new changes from your parent repo simply run
+```
+git merge upstream/master
+```
+
+# FAQs (Frequently Asked Questions)
+
+- Who all can contribute?
+  - Anyone with a GitHub account and who is signed up for
+[hacktoberfest](https://hacktoberfest.digitalocean.com/) :)
+- Are you getting paid for this?
+  - Sadly no. We do it for fun, education, and glory.
+- How many pull requests (PR) must be made, if I want to get an awesome t-shirt from Hacktoberfest 2022?
+  - 4
+- How do I track my progress to get an awesome shirt from Hacktoberfest 2022?
+  - [go to:](https://hacktoberfest.digitalocean.com/profile/). (Check Out Your Own Stats at Right Top)
+- What is the duration of Hacktoberfest 2023?
+  - It is from 1st october to 31st october 2023
+- What is the event for?
+  - For the open source community engagement and learn how to contribute to open source.
+
 -->
-*/
+
+
+###### We will do our best to merge as much as possible from everyone. However, time is limited <3
+<br>
