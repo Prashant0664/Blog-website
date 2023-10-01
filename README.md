@@ -1,4 +1,5 @@
-# Blogging Website README
+# Blogging Website
+*For **Hacktoberfest** refer Contributing.md* <br/>
 
 ## Table of Contents
 - [Introduction](#introduction)
