@@ -45,7 +45,6 @@ function Auth() {
         return;
       }
       const data=await checkifverify(temail);
-      console.log(data,"fioenc");
       if(data.msg==="ok"){
 
       }
@@ -88,7 +87,6 @@ function Auth() {
   const logIn = async () => {
     try {
     var temail=email.toLowerCase()
-    console.log(temail);
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/login`,
         {
@@ -96,7 +94,6 @@ function Auth() {
           password,
         }
       );
-      console.log(data);
       setError('')
       setSuccess("Success !")
       setTimeout(() => {
@@ -105,8 +102,7 @@ function Auth() {
         navigate("/");
       }, 2000);
     } catch (error) {
-      console.log("--");
-      cosnole.log(error)
+      console.log(error)
       setError(error.response.data.message);
     }
   };
