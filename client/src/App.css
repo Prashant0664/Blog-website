@@ -593,6 +593,10 @@
   font-size: xx-small;
 }
 
+.navbar .search .search_wrap input{
+  border-radius: 10px;
+}
+
 @media screen and (max-width: 1231px) {
 
   .navbar {
