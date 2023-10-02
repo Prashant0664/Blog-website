@@ -14,14 +14,15 @@ const postRoutes = require("./routes/post.js");
 var MongoDBStore = require("connect-mongodb-session")(session);
 require('dotenv').config();
 
-app.use(
-  cors({
+app.use(cors());
+// app.use(
+  // cors({
     // origin: ["http://localhost:5000", "http://localhost:3000"],
-    origin: ["https://allblogwebsiteapi.onrender.com", "https://allblogapp-project.vercel.app"],
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
+    // origin: ["https://allblogwebsiteapi.onrender.com", "https://allblogapp-project.vercel.app"],
+    // methods: "GET,POST,PUT,DELETE",
+    // credentials: true,
+  // })
+// );
 
 mongoose.set("strictQuery", false);
 mongoose.connect(keys.mongoURI, () => {
