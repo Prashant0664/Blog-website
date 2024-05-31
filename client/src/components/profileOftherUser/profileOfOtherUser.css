@@ -1,0 +1,94 @@
+.ProfileOfOtherUser {
+    width: 100%;
+
+}
+
+.user_wrapper {
+    text-align: center;
+    margin-top: 65px;
+    margin: auto;
+}
+
+.user_wrapper .user_image {
+    width: 100%;
+    margin: auto;
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.user_wrapper .user_image img {
+    margin: auto;
+}
+
+.user_wrapper .user_image span {
+    font-weight: 600;
+    color: rgb(39, 39, 39);
+    margin-top: 7px;
+}
+
+.user_wrapper .user_about {
+    color: black;
+    font-size: 15px;
+    text-align: center;
+}
+
+.aboutn {
+    font-size: 30px;
+}
+
+@media screen and (max-width:420px) {
+    .user_wrapper {
+        width: 92%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .user_wrapper {
+        width: 85%;
+    }
+}
+@media screen and (max-width:440px) {
+    
+    .aboutn{
+        margin-top:400px;
+    }
+    .user_about{
+        margin-top:280px;
+    }
+    .marg{
+        margin-top:300px;
+    }
+}
+@media screen and (max-width:440px) {
+    
+    .aboutn{
+        margin-top:400px;
+    }
+    .user_about{
+        margin-top:280px;
+    }
+    .marg{
+        margin-top:350px;
+    }
+}
+
+.imgpro {
+    width: 300px;
+    position: relative;
+    /* height:200px; */
+    /* width:auto; */
+}
+
+.user_about {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.cent{
+    text-align: center;
+    cursor: pointer;
+    margin-top:15px;
+}
+.user_wrapper {
+    margin: auto;
+}
