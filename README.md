@@ -1,6 +1,8 @@
 # Blogging Website
 *For **Hacktoberfest** please refer [Contributing.md](https://github.com/Prashant0664/Blog-website/blob/master/CONTRIBUTING.md)* <br/>
 
+Link: https://allblogsv2assignment.vercel.app
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Demo](#demo)
@@ -16,12 +18,12 @@
 ---
 
 ## Introduction
-Welcome to the Blogging Website project! This is a web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to create and manage their blogs, post projects, follow other users, comment on blogs, save content, bookmark blogs, and more. The application also includes features such as email verification for user registration and Redux for state management.
+Welcome to the Blogging Website project! This is a web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to create and manage their blogs, post projects, follow other users, comment on blogs, save content, bookmark blogs, like blogs and more. The application also includes features such as email verification for user registration and Redux for state management.
 
 ---
-## Demo
+## Demo Link: 
 
-https://github.com/Prashant0664/Blog-website/assets/98750053/d762e07b-2282-4a9e-9dde-30f5a322c6a1
+Full Demo Video Drive link: https://drive.google.com/file/d/1zPDw9Q28q-86CVlG62k5363gzIeGL7YX/view?usp=sharing
 
 ---
 
@@ -33,9 +35,13 @@ Here are some of the key features of this Blogging Website:
 
 🔥 **Blogging:** Users can create and publish their blogs with rich text formatting.
 
+🔥 **Sharing:** Users can share any blogs on social media platforms;
+
+🔥 **Filter Blogs:** Users can search other users and filter content according to category.
+
 🔥 **Project Posting:** Users can share and showcase their projects on their profile.
 
-🔥 **Social Features:** Users can follow other users, comment on blogs, and save/bookmark content they like.
+🔥 **Social Features:** Users can follow other users, comment on blogs, and save, like and bookmark content they like.
 
 🔥 **Responsive Design:** The website is designed to work seamlessly on various screen sizes and devices.
 
@@ -73,12 +79,12 @@ Before you begin, make sure you have the following installed on your system:
 (Request: **Please Star⭐️ the Repo or follow [github](https://github.com/Prashant0664/) if you find this project interesting😁!** <br/>)
 1. Clone this GitHub repository to your local machine:
    ```
-   git clone https://github.com/prashant0664/blog-website.git
+   git clone https://github.com/Prashant0664/All-Blogs-V2.git
    ```
 
 2. Change into the project directory:
    ```
-   cd blog-website
+   cd All-Blogs-V2
    ```
 
 3. Install the backend dependencies:
@@ -94,6 +100,8 @@ Before you begin, make sure you have the following installed on your system:
    ```
 
 5. Set up your MongoDB database and configure the connection details in the backend's `.env` file.
+
+_IMP: Seperate setup of both frontend and backend is given in *client* and *backend* folders *Readme.md*_
 
 6. Start the backend server:
    ```
@@ -112,7 +120,7 @@ Before you begin, make sure you have the following installed on your system:
 ---
 
 ## Usage
-You can now use the Blogging Website to create, share, and discover blogs, projects, and more. Register an account, verify your email, and start enjoying the features of the application.
+You can now use the Blogging Website to create, like, save, share, and discover blogs, projects, and much more. Use Google Signin or Register an account, verify your email, and start enjoying the features of the application.
 
 ---
 
@@ -133,7 +141,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-### *Notes: For any doubt or question you can open an issue. I will reply ASAP.*
+### *Note: For any doubt or question you can open an issue. I will reply ASAP.*
 
 Thank you for using and contributing to the Blogging Website project! If you have any questions or need assistance, please don't hesitate to reach out to the maintainers.
-
