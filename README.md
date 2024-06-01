@@ -1,10 +1,10 @@
-# Blogging Website
-*For **Hacktoberfest** please refer [Contributing.md](https://github.com/Prashant0664/Blog-website/blob/master/CONTRIBUTING.md)* <br/>
+# Blogging Website Version 2.0
 
-Link: https://allblogsv2assignment.vercel.app
+For older version checkout the branch named *version1*
 
 ## Table of Contents
 - [Introduction](#introduction)
+- [New Features](#new-features)
 - [Demo](#demo)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -21,6 +21,16 @@ Link: https://allblogsv2assignment.vercel.app
 Welcome to the Blogging Website project! This is a web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to create and manage their blogs, post projects, follow other users, comment on blogs, save content, bookmark blogs, like blogs and more. The application also includes features such as email verification for user registration and Redux for state management.
 
 ---
+
+## New Features:
+🔥 **Like:** Users can now like Blogs and can see their liked blogs in profile.
+🔥 **Filter:** User can now filter the content from dropdown menu below Navbar.
+🔥 **Share:** User can now share blogs on social media using share button.
+🔥 **Use of Params:** Blog Article now use params decreasing the coupling and increasing speed.
+🔥 **Optimised:** More optimised than ever.
+🔥 **User Frinedly:** More user friendly tha ever.
+
+
 ## Demo Link: 
 
 Full Demo Video Drive link: https://drive.google.com/file/d/1zPDw9Q28q-86CVlG62k5363gzIeGL7YX/view?usp=sharing
