@@ -17,7 +17,8 @@ function PostCard({ post, type }) {
   const [menus, showmenu] = React.useState(false);
   const [sbook, setsbook] = React.useState(true);
   const [sbook2, setsbook2] = React.useState(true);
-  const utcTimeString = post.createdAt;
+  // console.log(post); .
+  const utcTimeString = (post && post.createdAt)?post.createdAt:"N/A";
   const date = new Date(utcTimeString);
   const localTimeString = date.toLocaleDateString();
   const navigate = useNavigate()
@@ -175,18 +176,18 @@ function PostCard({ post, type }) {
   return (
     <div className="item" >
       <div className="left">
-        <img src={post.image} alt="" onClick={handleDown} />
+        <img src={post && post.image?post.image:""} alt="" onClick={handleDown} />
       </div>
       <div className="right">
         <div className="title">
           <h3 onClick={navigateToArticle}>
-            {post.title}
+            {post && post.title}
           </h3>
           {
             (!type || type != "powner") ?
               <>
                 <div className="view_post">
-                  {post.views} <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="15px" height="15px" viewBox="-3.5 0 32 32" version="1.1">
+                  {post && post.views} <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="15px" height="15px" viewBox="-3.5 0 32 32" version="1.1">
                     <path d="M12.406 13.844c1.188 0 2.156 0.969 2.156 2.156s-0.969 2.125-2.156 2.125-2.125-0.938-2.125-2.125 0.938-2.156 2.125-2.156zM12.406 8.531c7.063 0 12.156 6.625 12.156 6.625 0.344 0.438 0.344 1.219 0 1.656 0 0-5.094 6.625-12.156 6.625s-12.156-6.625-12.156-6.625c-0.344-0.438-0.344-1.219 0-1.656 0 0 5.094-6.625 12.156-6.625zM12.406 21.344c2.938 0 5.344-2.406 5.344-5.344s-2.406-5.344-5.344-5.344-5.344 2.406-5.344 5.344 2.406 5.344 5.344 5.344z" />
                   </svg>
 
@@ -195,7 +196,7 @@ function PostCard({ post, type }) {
                   &nbsp;
                   <div className="view_post">
                     {/* <div className="profile_data24 bluev"> */}
-                    {post.likes ? post.likes : 0}
+                    {post && post.likes ? post.likes : 0}
                     <div className="">{"" + ""}
                     </div>
                     &nbsp;
@@ -213,7 +214,7 @@ function PostCard({ post, type }) {
         <div className="description">
 
           <br className="hidesmall" />
-          {post.description}
+          {post && post.description}
         </div>
         {(type && type === "powner")
           ?
@@ -221,7 +222,7 @@ function PostCard({ post, type }) {
             <div className=" profile_data">
               <div className=" view_post_profile bluev">
                 {/* <div className="profile_data24 bluev"> */}
-                {post.views} <svg color="blue" xmlns="http://www.w3.org/2000/svg" fill="blue" width="18px" height="18px" viewBox="-3.5 0 32 32" version="1.1">
+                {post && post.views} <svg color="blue" xmlns="http://www.w3.org/2000/svg" fill="blue" width="18px" height="18px" viewBox="-3.5 0 32 32" version="1.1">
                   <path d="M12.406 13.844c1.188 0 2.156 0.969 2.156 2.156s-0.969 2.125-2.156 2.125-2.125-0.938-2.125-2.125 0.938-2.156 2.125-2.156zM12.406 8.531c7.063 0 12.156 6.625 12.156 6.625 0.344 0.438 0.344 1.219 0 1.656 0 0-5.094 6.625-12.156 6.625s-12.156-6.625-12.156-6.625c-0.344-0.438-0.344-1.219 0-1.656 0 0 5.094-6.625 12.156-6.625zM12.406 21.344c2.938 0 5.344-2.406 5.344-5.344s-2.406-5.344-5.344-5.344-5.344 2.406-5.344 5.344 2.406 5.344 5.344 5.344z" />
                 </svg>
                 <div className="">{"" + ""}
@@ -231,7 +232,7 @@ function PostCard({ post, type }) {
               |
               <div className=" view_post_profile bluev">
                 {/* <div className="profile_data24 bluev"> */}
-                {post.likes ? post.likes : 0}
+                {post && post.likes ? post.likes : 0}
                 <div className="">{"" + ""}
                 </div>
                 &nbsp;
@@ -248,8 +249,8 @@ function PostCard({ post, type }) {
             <RWebShare
               data={{
                 text: "ALL BLOGS",
-                url: `article/` + `${post._id}`,
-                title: `${post.title}`,
+                url: `article/` + `${post && post._id?post._id:-1}`,
+                title: `${post && post.title?post.title:"N/A"}`,
               }}
               onClick={() =>
                 console.log("shared successfully!")
@@ -267,24 +268,24 @@ function PostCard({ post, type }) {
               <div className="user_image">
                 {!user ?
                   <Link to={`/auth`}>
-                    <img className="imgscp" src={post.user ? post.user?.picture : ""} alt="" />
+                    <img className="imgscp" src={post && post.user ? post.user?.picture : ""} alt="" />
                   </Link>
                   :
-                  (post.user && post.user._id) &&
-                  <Link to={`/ProfileRedirect/${post.user._id}`}>
+                  (post && post.user && post.user._id) &&
+                  <Link to={`/ProfileRedirect/${post && post.user._id?post.user._id:-1}`}>
                     <img className="imgscp" src={post.user?.picture} alt="" />
                   </Link>
                 }
-                {post.user ? <Link to={`/ProfileRedirect/${post?.user?._id}`}>
+                {post && post.user ? <Link to={`/ProfileRedirect/${post?.user?._id}`}>
                   <img className="imgscp" src={post.user?.picture} alt="" />
                 </Link> :
                   <></>}
               </div>
               <div className="user_middle">
                 {!user ?
-                  <span className="user_name"><Link to={`/auth`}>{post.user.name} </Link></span>
+                  <span className="user_name"><Link to={`/auth`}>{(post && post.user && post.user.name )? post.user.name : "N/A"} </Link></span>
                   :
-                  <span className="user_name"><Link to={`/ProfileRedirect/${post.user._id}`}>{post.user.name} </Link></span>
+                  <span className="user_name"><Link to={`/ProfileRedirect/${post && post.user._id?post.user._id:-1}`}>{post && post.user.name} </Link></span>
                 }
                 <span className="date">{localTimeString}</span>
               </div>
@@ -341,8 +342,8 @@ function PostCard({ post, type }) {
                     <RWebShare
                       data={{
                         text: "ALL BLOGS",
-                        url: `article/` + `${post._id}`,
-                        title: `${post.title}`,
+                        url: `article/` + `${post && post._id?post._id:-1}`,
+                        title: `${post && post.title}`,
                       }}
                       onClick={() =>
                         console.log("shared successfully!")
@@ -354,7 +355,7 @@ function PostCard({ post, type }) {
 
                           Share
                         </div>
-                        <svg width="13px" height="13px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="white"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M14 6C14 3.79086 15.7909 2 18 2C20.2091 2 22 3.79086 22 6C22 8.20914 20.2091 10 18 10C16.7961 10 15.7164 9.46813 14.9831 8.62655L9.91209 11.1621C9.96969 11.4323 10 11.7126 10 12C10 12.2874 9.96969 12.5678 9.91208 12.838L14.9831 15.3735C14.9831 15.3735 16.7961 14 18 14C20.2091 14 22 15.7909 22 18C22 20.2091 20.2091 22 18 22C15.7909 22 14 20.2091 14 18C14 17.7126 14.0303 17.4322 14.0879 17.162L9.01694 14.6265C8.28363 15.4681 7.20393 16 6 16C3.79086 16 2 14.2091 2 12C2 9.79086 3.79086 8 6 8C7.20395 8 8.28367 8.53191 9.01698 9.37354L14.0879 6.83807C14.0303 6.56781 14 6.28744 14 6Z" fill="#323232"></path> </g></svg>
+                        <svg width="13px" height="13px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="white"></rect> <path fillRule="evenodd" clipRule="evenodd" d="M14 6C14 3.79086 15.7909 2 18 2C20.2091 2 22 3.79086 22 6C22 8.20914 20.2091 10 18 10C16.7961 10 15.7164 9.46813 14.9831 8.62655L9.91209 11.1621C9.96969 11.4323 10 11.7126 10 12C10 12.2874 9.96969 12.5678 9.91208 12.838L14.9831 15.3735C14.9831 15.3735 16.7961 14 18 14C20.2091 14 22 15.7909 22 18C22 20.2091 20.2091 22 18 22C15.7909 22 14 20.2091 14 18C14 17.7126 14.0303 17.4322 14.0879 17.162L9.01694 14.6265C8.28363 15.4681 7.20393 16 6 16C3.79086 16 2 14.2091 2 12C2 9.79086 3.79086 8 6 8C7.20395 8 8.28367 8.53191 9.01698 9.37354L14.0879 6.83807C14.0303 6.56781 14 6.28744 14 6Z" fill="#323232"></path> </g></svg>
                       </span>
                     </RWebShare>
 

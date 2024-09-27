@@ -14,13 +14,14 @@ const postRoutes = require("./routes/post.js");
 var cookieParser = require('cookie-parser')
 var MongoDBStore = require("connect-mongodb-session")(session);
 require('dotenv').config();
-
+// console.log(process.env.REACT_APP_FRONTEND_URL);
 app.use(
   cors({
-    origin: ["https://allblogwebsiteapi.onrender.com", "https://allblogapp-project.vercel.app"],
+    origin: [process.env.REACT_APP_BACKEND_URL_PRODUCTION, process.env.REACT_APP_FRONTEND_URL_PRODUCTION],
+    // origin: [process.env.REACT_APP_BACKEND_URL, process.env.REACT_APP_FRONTEND_URL],
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
-  }) 
+  })
 );
 
 mongoose.set("strictQuery", false);
@@ -33,13 +34,13 @@ var store = new MongoDBStore(
   },
   function (error) {
     if (error) {
-      // console.log("err", error);
+      console.log("err", error);
     }
   }
 );
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Credentials', 'true'); 
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });
 
@@ -50,16 +51,16 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.set("trust proxy", 1)
 app.use(cookieParser())
 app.use(session({
-    proxy : true, 
-    secret: keys.cookieKey,
-    resave: false,
-    saveUninitialized: true,
-  cookie: {
-          maxAge: 15 * 24 * 60 * 60 * 1000,
-          sameSite: "none",
-          secure: true,
-          signed: true,
-        },
+  proxy: true,
+  secret: keys.cookieKey,
+  resave: false,
+  saveUninitialized: true,
+  // cookie: {
+  //   maxAge: 15 * 24 * 60 * 60 * 1000,
+  //   sameSite: "none",
+  //   secure: true,
+  //   signed: true,
+  // },
 }))
 
 app.use(passport.initialize());

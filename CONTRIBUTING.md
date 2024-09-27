@@ -1,4 +1,4 @@
-# Hacktoberfest2023
+# Hacktoberfest2024
 
 **[hacktoberfest](https://hacktoberfest.digitalocean.com/). If you don't know where to start, feel free to watch the videos linked below, and read the contribution rules. Happy Contributing!**
 
