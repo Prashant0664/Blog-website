@@ -25,7 +25,7 @@ function HomePage({ user, category }) {
         },
       })
         .then((data) => {
-          if (data.status === 201) return data.json();
+          if (data.status === 401) return data.json();
           throw new Error("Authentication Failed!");
         })
         .then((data) => {
