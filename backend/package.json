@@ -25,7 +25,7 @@
     "http-status-codes": "^2.3.0",
     "jsonwebtoken": "^9.0.2",
     "memory-cache": "^0.2.0",
-    "mongoose": "^8.0.4",
+    "mongoose": "^7.6.3",
     "nodemailer": "^6.9.8",
     "nodemon": "^3.0.2",
     "passport": "^0.7.0",
