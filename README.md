@@ -6,7 +6,7 @@ For older version checkout the branch named *version1*
 ## Table of Contents
 - [Introduction](#introduction)
 - [New Features](#new-features)
-- [Demo](#demo)
+- [Demo](#demo-link)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
@@ -31,10 +31,12 @@ Welcome to the Blogging Website project! This is a web application built using t
 🔥 **Optimised:** More optimised than ever.
 🔥 **User Frinedly:** More user friendly tha ever.
 
+---
 
 ## Demo Link: 
 
-Full Demo Video Drive link: https://drive.google.com/file/d/1zPDw9Q28q-86CVlG62k5363gzIeGL7YX/view?usp=sharing
+Full Demo Video Drive link: [https://drive.google.com/file/d/1zPDw9Q28q-86CVlG62k5363gzIeGL7YX/view?usp=sharing
+](https://drive.google.com/file/d/1As5DVfGSCfBOT9dqbX7MIYm69XllfGra/view?usp=sharing)
 
 ---
 
