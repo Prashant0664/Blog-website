@@ -1,5 +1,4 @@
 require('dotenv').config();
-const keys = require("../config/keys");
 
 if(process.env.NODE_ENV === 'production'){
     module.exports = {

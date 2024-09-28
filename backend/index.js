@@ -63,6 +63,22 @@ app.use(session({
   // },
 }))
 
+// const arr=[
+//   process.env.MONGO_URI_PRODUCTION,
+//   process.env.GOOGLE_CLIENT_PRODUCTION,
+//   process.env.GOOGLE_SECRET_PRODUCTION,
+//   process.env.COOKIE_KEY_PRODUCTION,
+//   process.env.TOKEN_SECRET_PRODUCTION,
+//   process.env.CLOUD_NAME_PRODUCTION,
+//   process.env.CLOUD_API_KEY_PRODUCTION,
+//   process.env.CLOUD_API_SECRET_PRODUCTION,
+//   process.env.PASS_PRODUCTION,
+//   process.env.EMAIL_ID_PRODUCTION,
+//   process.env.PORT_PRODUCTION,
+//   process.env.REACT_APP_BACKEND_URL_PRODUCTION,
+//   process.env.REACT_APP_FRONTEND_URL_PRODUCTION
+// ]
+// console.log(arr);
 app.use(passport.initialize());
 app.use(passport.session());
 
