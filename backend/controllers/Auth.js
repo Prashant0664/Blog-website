@@ -7,8 +7,10 @@ const Code = require('../models/Code');
 const { sendResetCode } = require("../helper/mail");
 const { sendReportMail } = require("../helper/reportmail");
 const generateCode = require("../helper/gen_code");
+const keys = require("../config/keys");
 
-const CLIENT_URL = `${process.env.REACT_APP_FRONTEND_URL}`;
+
+const CLIENT_URL = `${keys.FRONTEND_URL}`;
 // const CLIENT_URL = "https://allblogapp-project.vercel.app";
 
 

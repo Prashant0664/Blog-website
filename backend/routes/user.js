@@ -1,5 +1,6 @@
 
 const express = require("express");
+const keys = require("../config/keys");
 
 const { generateToken } = require("../helper/token");
 const {
@@ -155,8 +156,8 @@ const register_google = async (req) => {
 router.get("/auth/google",passport.authenticate("google",{scope:["profile","email"]}));
 
 router.get("/auth/google/callback",passport.authenticate("google",{
-    successRedirect:`${process.env.REACT_APP_FRONTEND_URL}/`,
-    failureRedirect:`${process.env.REACT_APP_FRONTEND_URL}/login`
+    successRedirect:`${keys.FRONTEND_URL}/`,
+    failureRedirect:`${keys.FRONTEND_URL}/login`
 }))
 
 

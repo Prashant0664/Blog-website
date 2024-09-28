@@ -1,11 +1,12 @@
 const dotenv = require("dotenv").config();
-const Port = process.env.PORT || 5002;
+const keys = require("./config/keys");
+const Port = keys.PORT || 5002;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const keys = require("./config/keys");
 const passport = require("passport");
 const session = require("express-session");
+// const session = require('cookie-session');
 const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const userRoutes = require("./routes/user.js");
@@ -14,27 +15,21 @@ const postRoutes = require("./routes/post.js");
 var cookieParser = require('cookie-parser')
 var MongoDBStore = require("connect-mongodb-session")(session);
 require('dotenv').config();
-if(process.env.NODE_ENV === 'production'){
-  console.log("running in production");
-}
-else{
-  console.log("running in ddedd");
-}
 app.use(
   cors({
-    origin: [process.env.REACT_APP_BACKEND_URL_PRODUCTION, process.env.REACT_APP_FRONTEND_URL_PRODUCTION],
-    // origin: [process.env.REACT_APP_BACKEND_URL, process.env.REACT_APP_FRONTEND_URL],
+    origin: [keys.BACKEND_URL, keys.FRONTEND_URL],
+    // origin: [keys.REACT_APP_BACKEND_URL, keys.REACT_APP_FRONTEND_URL],
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
 );
 
 mongoose.set("strictQuery", false);
-mongoose.connect(keys.mongoURI)
+mongoose.connect(keys.MONGO_URI)
 
 var store = new MongoDBStore(
   {
-    uri: keys.mongoURI,
+    uri: keys.MONGO_URI,
     collection: "mySessions",
   },
   function (error) {
@@ -57,7 +52,7 @@ app.set("trust proxy", 1)
 app.use(cookieParser())
 app.use(session({
   proxy: true,
-  secret: keys.cookieKey,
+  secret: keys.COOKIE_KEY,
   resave: false,
   saveUninitialized: true,
   // cookie: {

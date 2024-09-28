@@ -1,16 +1,17 @@
 const nodemailer = require("nodemailer");
+const keys = require("../config/keys");
 
 exports.sendVerifyCode = (email, name, code) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "doraemonarea123987@gmail.com",
-      pass: process.env.PASS,
+      user: keys.EMAIL_ID,
+      pass: keys.PASS,
     },
   });
   // console.log(email)
   const mailOptions = {
-    from: "doraemonarea123987@gmail.com",
+    from: keys.EMAIL_ID,
     to: email,
     subject: "ALL Blogs Email Verification Code",
     html: `<div 

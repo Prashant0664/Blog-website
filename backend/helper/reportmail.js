@@ -1,16 +1,17 @@
 const nodemailer = require("nodemailer");
+const keys = require("../config/keys");
 
 exports.sendReportMail = (email1, email2, name1, name2, reason, postid) => {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "doraemonarea123987@gmail.com",
-            pass: process.env.PASS,
+            user: keys.EMAIL_ID,
+            pass: keys.PASS,
         },
     });
     const mailOptions3 = {
-        from: "doraemonarea123987@gmail.com",
-        to: "doraemonarea123987@gmail.com",
+        from: keys.EMAIL_ID,
+        to: keys.EMAIL_ID,
         subject: "Someone Requested Report",
         html: `<div 
       style=

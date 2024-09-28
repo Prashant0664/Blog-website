@@ -31,8 +31,6 @@ passport.use(new GoogleStrategy({
     )
     User.findOne({ googleId: profile.id }).then((existingUser) => {
       if (existingUser) {
-          // console.log(9);
-          // console.log(existingUser)
           return done(null, existingUser)
         } else {
           var url=profile.photos[0].value;

@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const keys = require("../config/keys");
 
 exports.authUser = async (req, res, next) => {
   try {
@@ -7,7 +8,7 @@ exports.authUser = async (req, res, next) => {
       if (!token) {
         return res.status(400).json({ message: "Invalid Authentification" });
       }
-      jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+      jwt.verify(token, keys.TOKEN_SECRET, (err, user) => {
         if (err) {
           return res.status(400).json({ message: "Invalid Authentificationn" });
         }
