@@ -14,7 +14,12 @@ const postRoutes = require("./routes/post.js");
 var cookieParser = require('cookie-parser')
 var MongoDBStore = require("connect-mongodb-session")(session);
 require('dotenv').config();
-console.log(process.env.REACT_APP_FRONTEND_URL);
+if(process.env.NODE_ENV === 'production'){
+  console.log("running in production");
+}
+else{
+  console.log("running in ddedd");
+}
 app.use(
   cors({
     origin: [process.env.REACT_APP_BACKEND_URL_PRODUCTION, process.env.REACT_APP_FRONTEND_URL_PRODUCTION],
