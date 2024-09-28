@@ -173,7 +173,8 @@ router.post("/login/success", async (req, res) => {
   if (req.isAuthenticated()) {
     // console.log(999);
     const token = generateToken({ id: req.user._id.toString() }, "15d");
-    return res.status(201).send({
+    // console.log(token);
+    return res.status(401).send({
       id: req.user._id,
       name: req.user.name,
       picture: req.user.picture,
@@ -187,7 +188,7 @@ router.post("/login/success", async (req, res) => {
     //   user: { id: req.user._id, name: req.user.name, email: req.user.email, googleId: req.user.googleId, picture: req.user.picture }
     // });
   } else {
-    // console.log("failed",error);
+    // console.log("failed");
     return res.status(401).json({
       success: false,
       message: "Un-successfull",

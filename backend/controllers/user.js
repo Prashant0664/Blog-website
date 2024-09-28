@@ -233,6 +233,7 @@ exports.checkbookmark = async (req, res) => {
       userid
     } = req.body;
     const user = await User.findOne({ _id: userid });
+    // console.log(user);
     var m = user.bookmarks;
     if (m.length == 0) {
       return res.status(202).json({ msg: "Does not exist" });
