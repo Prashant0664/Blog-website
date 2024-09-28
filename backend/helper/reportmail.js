@@ -2,18 +2,18 @@ const nodemailer = require("nodemailer");
 const keys = require("../config/keys");
 
 exports.sendReportMail = (email1, email2, name1, name2, reason, postid) => {
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-            user: keys.EMAIL_ID,
-            pass: keys.PASS,
-        },
-    });
-    const mailOptions3 = {
-        from: keys.EMAIL_ID,
-        to: keys.EMAIL_ID,
-        subject: "Someone Requested Report",
-        html: `<div 
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: keys.EMAIL_ID,
+      pass: keys.PASS,
+    },
+  });
+  const mailOptions3 = {
+    from: keys.EMAIL_ID,
+    to: keys.EMAIL_ID,
+    subject: "Someone Requested Report",
+    html: `<div 
       style=
       "max-width:700px;
       margin-bottom:1rem;
@@ -60,7 +60,7 @@ exports.sendReportMail = (email1, email2, name1, name2, reason, postid) => {
       <br>
       <div>
         Request User Mail: ${email2}<br/>
-        Reported user mail: ${email1}<br/>
+        Reported user Mail: ${email1}<br/>
         Reported content id: ${postid}<br/>
         Reason: ${reason}
       </div>
@@ -69,12 +69,12 @@ exports.sendReportMail = (email1, email2, name1, name2, reason, postid) => {
         </span>
       </div>
     </div>`,
-    };
-    const mailOptions = {
-        from: "doraemonarea123987@gmail.com",
-        to: "prashant201103@gmail.com",
-        subject: "Report on one of your Blogs",
-        html: `<div 
+  };
+  const mailOptions = {
+    from: keys.EMAIL_ID,
+    to: keys.EMAIL_ID,
+    subject: "Report on one of your Blogs",
+    html: `<div 
       style=
       "max-width:700px;
       margin-bottom:1rem;
@@ -119,12 +119,12 @@ exports.sendReportMail = (email1, email2, name1, name2, reason, postid) => {
         </span>
       </div>
     </div>`,
-    };
-    const mailOptions2 = {
-        from: "doraemonarea123987@gmail.com",
-        to: "prashant201103@gmail.com",
-        subject: "All Blogs Support Team",
-        html: `<div 
+  };
+  const mailOptions2 = {
+    from: keys.EMAIL_ID,
+    to: email2,
+    subject: "All Blogs Support Team",
+    html: `<div 
       style=
       "max-width:700px;
       margin-bottom:1rem;
@@ -176,21 +176,21 @@ exports.sendReportMail = (email1, email2, name1, name2, reason, postid) => {
         </span>
       </div>
     </div>`,
-    };
+  };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            // console.log(error);
-        }
-    });
-    transporter.sendMail(mailOptions3, (error, info) => {
-        if (error) {
-            // console.log(error);
-        }
-    });
-    transporter.sendMail(mailOptions2, (error, info) => {
-        if (error) {
-            // console.log(error);
-        }
-    });
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      // console.log(error);
+    }
+  });
+  transporter.sendMail(mailOptions3, (error, info) => {
+    if (error) {
+      // console.log(error);
+    }
+  });
+  transporter.sendMail(mailOptions2, (error, info) => {
+    if (error) {
+      // console.log(error);
+    }
+  });
 };

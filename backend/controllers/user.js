@@ -28,11 +28,11 @@ exports.sendreportmails = async (req, res) => {
     try {
       sendReportMail(emailr, emailrd, namer, namerd, reason, pid);
     } catch (error) {
-      // // console.log("error in sending mails")
+      // console.log("error in sending mails")
     }
     return res.status(200).json({ msg: "ok" });
   } catch (error) {
-    // // console.log(error);
+    // console.log(error);
     return res.status(400).json({ msg: "Bad Request" })
   }
 }
@@ -536,9 +536,6 @@ exports.showyourposts = async (req, res) => {
     var img = "";
     var title = "";
     var desc = "";
-    // var imgp = "";
-    // var name = "";
-    // var userid = "";
     var postid = "";
     for (var i = 0; i < arr.length; i++) {
       var pd = await Post.findById(arr[i]);
@@ -555,7 +552,7 @@ exports.showyourposts = async (req, res) => {
       res.status(200).json({ msg: respon });
     }
   } catch (error) {
-    // // console.log("error in postshow")
+    // console.log("error in postshow")
     return res.status(400).json({ msg: "error" });
   }
 }
@@ -592,7 +589,6 @@ exports.follow = async (req, res) => {
     user.save();
     return res.status(200).json({ msg: "ok" });
   } catch (error) {
-    // console.log(error);
     // console.log("error in follow");
     return res.status(400).json({ msg: "error in follow" });
   }
@@ -739,37 +735,11 @@ exports.checkfollowing = async (req, res) => {
     }
     return res.status(200).json({ msg: "not" });
   } catch (error) {
-    // console.log(error)
     // console.log("error in fetchcehckfollow");
     return res.status(400).json({ msg: "error in fetchcheckfollow" });
   }
 }
-// exports.checkfollowing = async (req, res) => {
-//   try {
-//     const {
-//       postid,
-//       userid
-//     } = req.body;
-//     const user = await User.findOne({ _id: userid });
-//     const post = await Post.findOne({ _id: postid });
-//     var m = user.following;
-//     if (m.length == 0) {
-//       return res.status(202).json({ msg: "Does not exist" });
-//     }
-//     else {
-//       for (var i = 0; i < m.length; i++) {
-//         if (m[i] == post.user) {
-//           return res.status(202).json({ msg: "ok" });
-//         }
-//       }
-//       return res.status(202).json({ msg: "Does not exists" });
-//     }
-//   }
-//   catch (error) {
-//     // console.log(error);
-//     return res.status(401).json({ msg: "ERROR" })
-//   }
-// }
+
 exports.deletepost = async (req, res) => {
   try {
     const { postid, userid } = req.body;
@@ -786,8 +756,7 @@ exports.deletepost = async (req, res) => {
     datas.save();
     return res.status(200).json({ mgs: "ok" });
   } catch (error) {
-    // console.log(error);
-    // // console.log("error in deleting post");
+    // console.log("error in deleting post");
     return res.status(400).json({ mgs: "Error" });
   }
 }
@@ -823,7 +792,7 @@ exports.login = async (req, res) => {
       likes: user.likes,
     });
   } catch (error) {
-    // // console.log(error);
+    // console.log(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };

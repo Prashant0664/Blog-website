@@ -7,14 +7,14 @@ const UserSchema = new mongoose.Schema({
     },
     isVerify: {
         type: Boolean,
-        default:false,
+        default: false,
     },
-    otp:{
-        type:Number,
+    otp: {
+        type: Number,
     }
 },
     { timestamps: true })
 
-UserSchema.index({createdAt: 1},{expireAfterSeconds: 1800});
+UserSchema.index({ createdAt: 1 }, { expireAfterSeconds: 1800 });
 module.exports = mongoose.model('VerifyRegister', UserSchema);
 

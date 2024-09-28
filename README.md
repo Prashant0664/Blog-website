@@ -19,7 +19,7 @@ For older version checkout the branch named *version1*
 ---
 
 ## Introduction
-Welcome to the Blogging Website project! This is a web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to create and manage their blogs, post projects, follow other users, comment on blogs, save content, bookmark blogs, like blogs and more. The application also includes features such as email verification for user registration and Redux for state management.
+Welcome to the Blogging Website project! This is a web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It allows users to create and manage their blogs, post projects, follow other users, comment on blogs, save content, bookmark blogs, like blogs and a lot more. The application also includes features such as email verification for user registration and Redux for state management.
 
 ---
 
@@ -97,7 +97,7 @@ Before you begin, make sure you have the following installed on your system:
 
 2. Change into the project directory:
    ```
-   cd All-Blogs-V2
+   cd Blog-website
    ```
 
 3. Install the backend dependencies:

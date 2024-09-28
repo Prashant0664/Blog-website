@@ -1,9 +1,13 @@
+_*NOTE: IF YOU FACE ANY ERROR, CHALLENGE OR HAVE ANY DOUBT, JUST CREATE AN PR(HIGHLY RECOMMENDED) OR EMAIL ME, I WILL RESPOND AS SOON AS POSSIBLE*_
+
+*DON'T FORGET TO `STAR` THE REPO AND FOLLOW [ME](https://github.com/prashant0664)🥹[PRASHANT0664](https://github.com/prashant0664)*
+
 ## To setup .env file:
 
 ``.env`` file contains only two values:
 
 ```
-REACT_APP_BACKEND_URL="http://localhost:5000"
+REACT_APP_BACKEND_URL="http://localhost:5002"
 REACT_APP_FRONTEND_URL=http://localhost:3000
 ```
 

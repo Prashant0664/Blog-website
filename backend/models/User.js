@@ -13,9 +13,9 @@ const userSchema = new Schema(
       type: String,
       required: function () { return !this.googleId },
     },
-    verify:{
-      type:Boolean,
-      default:false
+    verify: {
+      type: Boolean,
+      default: false
     },
     googleId: {
       type: String,
@@ -30,37 +30,37 @@ const userSchema = new Schema(
     about: {
       type: String
     },
-    bookmarks:{
-      type:Array,
-      default:[]
+    bookmarks: {
+      type: Array,
+      default: []
     },
-    likes:{
-      type:Array,
-      default:[]
+    likes: {
+      type: Array,
+      default: []
     },
-    posts:{
-      type:Array,
-      default:[]
+    posts: {
+      type: Array,
+      default: []
     },
-    following:{
-      type:Array,
-      default:[],
+    following: {
+      type: Array,
+      default: [],
     },
-    followerscount:{
-      type:Number,
-      default:0,
+    followerscount: {
+      type: Number,
+      default: 0,
     },
-    followingcount:{
-      type:Number,
-      default:0,
+    followingcount: {
+      type: Number,
+      default: 0,
     },
-    likeslist:{
-      type:Map,
-      of:Boolean,
+    likeslist: {
+      type: Map,
+      of: Boolean,
     },
-    bookmarkslist:{
-      type:Map,
-      of:Boolean,
+    bookmarkslist: {
+      type: Map,
+      of: Boolean,
     }
 
   },

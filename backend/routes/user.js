@@ -45,14 +45,14 @@ const {
 const {
   google_auth,
   google_auth_callback,
-}=require("../controllers/Auth")
+} = require("../controllers/Auth")
 
 var passport = require('passport')
 const OAuthStrategy = require('passport-oauth').OAuthStrategy;
 var GoogleStrategy = require('passport-google-oidc');
 
 const router = express.Router();
-const app=express();
+const app = express();
 const { authUser } = require("../middleware/auth");
 // app.use(passport.initialize());
 // app.use(passport.session());
@@ -96,7 +96,7 @@ router.post("/changeabout", changeabout);
 const register_google = async (req) => {
   try {
     const { name, temail, password, image } = req.body;
-    
+
     const check = await User.findOne({ temail });
     if (check) {
       return res.status(400).json({
@@ -111,7 +111,7 @@ const register_google = async (req) => {
       email: temail,
       password: hashed_password,
       verify: true,
-      picture:image
+      picture: image
     }).save();
     const token = generateToken({ id: user._id.toString() }, "15d");
     res.send({
@@ -153,11 +153,11 @@ const register_google = async (req) => {
 //   google_auth_callback
 // );
 
-router.get("/auth/google",passport.authenticate("google",{scope:["profile","email"]}));
+router.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
-router.get("/auth/google/callback",passport.authenticate("google",{
-    successRedirect:`${keys.FRONTEND_URL}/`,
-    failureRedirect:`${keys.FRONTEND_URL}/login`
+router.get("/auth/google/callback", passport.authenticate("google", {
+  successRedirect: `${keys.FRONTEND_URL}/`,
+  failureRedirect: `${keys.FRONTEND_URL}/login`
 }))
 
 
@@ -169,11 +169,8 @@ router.get("/login/failed", (req, res) => {
 });
 
 router.post("/login/success", async (req, res) => {
-  // console.log(req.user,"lll");
   if (req.isAuthenticated()) {
-    // console.log(999);
     const token = generateToken({ id: req.user._id.toString() }, "15d");
-    console.log(token);
     return res.status(201).send({
       id: req.user._id,
       name: req.user.name,
@@ -181,7 +178,7 @@ router.post("/login/success", async (req, res) => {
       token: token,
       likes: req.user.likes,
       bookmarks: req.user.bookmarks,
-  });
+    });
     // res.status(200).json({
     //   success: true,
     //   message: "successfull",

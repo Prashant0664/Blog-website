@@ -43,7 +43,6 @@ function ProfileOfOtherUser() {
     const data = await getUser(userID);
     setOtherUser(data._doc);
     const sfcr = await checkfollowing(user.id, userID);
-    // console.log(sfcr)
     if(sfcr){
     if (sfcr.msg === "ok") {
       sfc(true);
@@ -70,8 +69,6 @@ function ProfileOfOtherUser() {
     else{
       alert("Some error occurred, try again later");
     }
-      // console.log(data);
-      // window.location.reload();
     } catch (error) {
       // console.log("error in following")
     }

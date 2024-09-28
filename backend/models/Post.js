@@ -8,7 +8,7 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    description: { 
+    description: {
       type: String,
       required: true
     },
@@ -21,13 +21,13 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    views:{
-      type:Number,
-      default:0
+    views: {
+      type: Number,
+      default: 0
     },
-    likes:{
-      type:Number,
-      default:0
+    likes: {
+      type: Number,
+      default: 0
     },
     user: {
       type: ObjectId,
@@ -42,7 +42,7 @@ const postSchema = new mongoose.Schema(
       {
         comment: {
           type: String,
-        }, 
+        },
         image: {
           type: String,
         },
@@ -54,9 +54,9 @@ const postSchema = new mongoose.Schema(
           type: Date,
           required: true,
         },
-        name:{
-          type:String,
-          default:"An User"
+        name: {
+          type: String,
+          default: "An User"
         }
 
       },

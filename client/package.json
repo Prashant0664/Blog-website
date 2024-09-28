@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "version": "1.1.0",
+  "version": "2.10.0",
   "private": true,
   "dependencies": {
     "@react-oauth/google": "^0.12.1",

@@ -269,7 +269,7 @@ export const getallpostdata = async (id) => {
     return data
   } catch (error) {
     // console.log(error);
-    // // console.log(error);
+    // console.log(error);
     return { msg: "error" }
   }
 }

@@ -79,8 +79,6 @@ exports.decreastLike = async (req, res) => {
   try {
     const increaseLike = await Post.findById(req.body.id);
     if (increaseLike) {
-      // increaseLike.likes -=1;
-      // increaseLike.likes=max(0,increaseLike.likes-1);
       increaseLike.likes -= 1;
       if (increaseLike.likes < 0) {
         increaseLike.likes = 0;
@@ -146,7 +144,7 @@ exports.getarticle = async (req, res) => {
     data.user = user;
     return res.status(200).json({ msg: data })
   } catch (error) {
-    // // console.log(error);
+    // console.log(error);
     return res.status(400).json({ msg: "error" });
   }
 }
@@ -182,7 +180,7 @@ exports.allPost = async (req, res) => {
         size,
       });
     }
-    else{
+    else {
       const skip = (page - 1) * size;
       const posts = await Post.find({ category: cat }).skip(skip).limit(size);
       const total = posts.length;
@@ -198,7 +196,7 @@ exports.allPost = async (req, res) => {
       });
     }
   } catch (error) {
-    // // console.log(error);
+    // console.log(error);
     res.status(400).json(error);
   }
 };

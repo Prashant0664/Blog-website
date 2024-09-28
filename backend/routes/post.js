@@ -18,4 +18,3 @@ router.post("/increaseLike", increaseLike)
 router.post("/decreastLike", decreastLike)
 router.post("/getLikes", getLikes)
 module.exports = router;
- 
