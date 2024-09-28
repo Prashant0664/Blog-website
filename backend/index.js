@@ -55,12 +55,12 @@ app.use(session({
   secret: keys.COOKIE_KEY,
   resave: false,
   saveUninitialized: true,
-  // cookie: {
-  //   maxAge: 15 * 24 * 60 * 60 * 1000,
+  cookie: {
+    maxAge: 15 * 24 * 60 * 60 * 1000,
     sameSite: "none",
-  //   secure: true,
-  //   signed: true,
-  // },
+    secure: true,
+    signed: true,
+  },
 }))
 
 // const arr=[
