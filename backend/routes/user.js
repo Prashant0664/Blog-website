@@ -174,7 +174,7 @@ router.post("/login/success", async (req, res) => {
     // console.log(999);
     const token = generateToken({ id: req.user._id.toString() }, "15d");
     // console.log(token);
-    return res.status(401).send({
+    return res.status(201).send({
       id: req.user._id,
       name: req.user.name,
       picture: req.user.picture,
