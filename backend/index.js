@@ -13,6 +13,7 @@ const userRoutes = require("./routes/user.js");
 const uploadRoutes = require("./routes/upload.js");
 const postRoutes = require("./routes/post.js");
 var cookieParser = require('cookie-parser')
+var cookieSession = require("cookie-session");
 var MongoDBStore = require("connect-mongodb-session")(session);
 require('dotenv').config();
 app.use(
@@ -55,12 +56,10 @@ app.use(session({
   secret: keys.COOKIE_KEY,
   resave: false,
   saveUninitialized: true,
-  SameSite: "none",
-  secure: true,
   cookie: {
     // maxAge: 15 * 24 * 60 * 60 * 1000,
-    SameSite: "none",
-    Secure: true,
+    sameSite: "none",
+    secure: false,
     // signed: true,
   },
 }))
