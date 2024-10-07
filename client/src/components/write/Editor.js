@@ -99,7 +99,6 @@ const Editor = ({ placeholder, prevdata, pflag }) => {
       } else {
         setError("");
       }
-
       if (image !== "") {
         setLoading(true);
         const img = dataURItoBlob(image);
@@ -109,7 +108,7 @@ const Editor = ({ placeholder, prevdata, pflag }) => {
         formData.append("file", img);
         const postImg = await uplaodImages(formData, user?.token);
         const cleanHtml = dompurify.sanitize(content, { FORCE_BODY: true });
-        // const cleanHtml = dompurify.sanitize(post.content, { FORCE_BODY: true });
+
         const post = await createPost(
           title,
           description,
@@ -120,9 +119,9 @@ const Editor = ({ placeholder, prevdata, pflag }) => {
           cleanHtml
         );
         if (post) {
-
           navigate("/");
         }
+        setLoading(false);
       }
     } catch (error) {
       setLoading(false);
