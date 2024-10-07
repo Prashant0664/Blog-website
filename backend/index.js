@@ -56,11 +56,12 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   sameSite: "none",
+  secure: true,
   // cookie: {
-  //   maxAge: 15 * 24 * 60 * 60 * 1000,
-  //   sameSite: "none",
-  //   secure: true,
-  //   signed: true,
+    // maxAge: 15 * 24 * 60 * 60 * 1000,
+    // sameSite: "none",
+    // secure: true,
+    // signed: true,
   // },
 }))
 
