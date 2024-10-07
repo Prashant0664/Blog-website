@@ -55,14 +55,14 @@ app.use(session({
   secret: keys.COOKIE_KEY,
   resave: false,
   saveUninitialized: true,
-  sameSite: "none",
+  SameSite: "none",
   secure: true,
-  // cookie: {
+  cookie: {
     // maxAge: 15 * 24 * 60 * 60 * 1000,
-    // sameSite: "none",
+    SameSite: "none",
     // secure: true,
     // signed: true,
-  // },
+  },
 }))
 
 app.use(passport.initialize());
