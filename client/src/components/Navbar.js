@@ -178,14 +178,16 @@ function Navbar({ postpage }) {
           </Link>
         </div>
       ) : (
-        <div className="links">
-          <Link className="write" to="/auth">
-            <BsPencilSquare className="" />
-            <span>Add</span>
-          </Link>
-          <Link to="/auth" className="logout">
-            SignUp | LogIn
-          </Link>
+        <div style={{marginRight:'20px'}}>
+          <div className="links">
+            <Link className="add-button" to="/auth" style={{display: "flex", alignItems:'center', gap:'4px'}}>
+              <BsPencilSquare className="BsPencilSquare" style={{marginBottom:'-2px'}}/>
+              <span>Add</span>
+            </Link>
+            <Link to="/auth" className="logout">
+              SignUp | LogIn
+            </Link>
+          </div>
         </div>
       )}
       {view2 && (
