@@ -57,10 +57,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-    // maxAge: 15 * 24 * 60 * 60 * 1000,
-    sameSite: "none",
-    secure: true,
-    // signed: true,
+    maxAge: 15 * 24 * 60 * 60 * 1000, // Uncomment if needed for cookie lifespan
+    sameSite: process.env.NODE_ENV === 'production' ? "none" : "lax", // "none" for cross-site cookies in production
+    secure: process.env.NODE_ENV === 'production', // Secure should be true in production (HTTPS)
   },
 }))
 
