@@ -155,13 +155,13 @@ function Navbar({ postpage }) {
         </div>
       </div>
       {user ? (
-        <div className="links write2">
+        <div className="links write2" style={{marginRight:'20px'}}>
           <Link
             className={view1 ? "write extra" : "write"}
             to="/write"
-            style={{ visibility: `${postpage && "hidden"}` }}
+            style={{ visibility: `${postpage && "hidden"}`, display: "flex", alignItems:'center', gap:'4px' }}
           >
-            <BsPencilSquare className="pencill" />
+            <BsPencilSquare className="pencill" style={{marginBottom:'-2px'}}/>
             <span>Add</span>
           </Link>
           <Link className="user" to="/profile">
@@ -173,18 +173,19 @@ function Navbar({ postpage }) {
             to=""
             className={view1 ? "logout extra" : "logout"}
             onClick={logoutFunction}
+            style={{marginTop:'-2px'}}
           >
             Log Out
           </Link>
         </div>
       ) : (
         <div style={{marginRight:'20px'}}>
-          <div className="links">
+          <div className="links" style={{gap:'20px'}}>
             <Link className="add-button" to="/auth" style={{display: "flex", alignItems:'center', gap:'4px'}}>
               <BsPencilSquare className="BsPencilSquare" style={{marginBottom:'-2px'}}/>
               <span>Add</span>
             </Link>
-            <Link to="/auth" className="logout">
+            <Link to="/auth" className="logout" style={{marginTop:'-2px'}}>
               SignUp | LogIn
             </Link>
           </div>
