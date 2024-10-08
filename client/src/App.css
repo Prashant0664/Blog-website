@@ -18,7 +18,6 @@
 
 .auth_wrapper:hover {
   box-shadow: 0px 0px 10px 1px black;
-
 }
 
 .auth_wrapper .img {
@@ -238,6 +237,7 @@
 
 .navbar .rocket {
   display: flex;
+  gap: 16px;
   align-items: center;
   margin: 0.2rem;
   position: relative;
@@ -251,7 +251,7 @@
   font-size: medium;
   color: rgb(70, 66, 66);
   font-weight: 200;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   font-family: "Pacifico", cursive;
   cursor: pointer;
 }
@@ -482,8 +482,10 @@
 
 .links {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  align-items: "center";
   white-space: nowrap;
+  justify-content: "space-between";
 }
 
 .links a {
@@ -491,9 +493,9 @@
 }
 
 .links a:first-child {
-  position: relative;
-  right: 60px;
-  top: 2px;
+  /* position: relative; */
+  /* right: 60px;
+  top: 2px; */
 }
 
 .links a:first-child svg {
@@ -540,10 +542,20 @@
   justify-items: center;
 }
 
+.add-button {
+  display: flex;
+  align-items: "center";
+  gap: "4px";
+}
+
+.BsPencilSquare {
+  margin: "2px";
+}
+
 .logout {
   font-size: 17px;
   font-weight: 400;
-  position: relative;
+  /* position: relative; */
   right: 30px;
   border-radius: 4px;
   color: rgb(0, 0, 0);
@@ -564,7 +576,6 @@
   object-fit: cover;
   height: 100%;
 }
-
 
 .logout:hover {
   text-decoration: underline;
@@ -594,7 +605,6 @@
 }
 
 @media screen and (max-width: 1231px) {
-
   .navbar {
     display: flex;
     /* justify-content: space-around; */
@@ -646,9 +656,7 @@
 }
 
 @media screen and (max-width: 1153px) {
-
-
-  .navbar .search .search_wrap input {
+    .navbar .search .search_wrap input {
     width: 355px;
   }
 }
@@ -681,8 +689,6 @@
     right: 221px;
   }
 
-
-
   .navbar .search .search_wrap input {
     width: 331px;
   }
@@ -693,7 +699,6 @@
 }
 
 @media screen and (max-width: 1058px) {
-
   .links a:first-child {
     right: 38px;
   }
