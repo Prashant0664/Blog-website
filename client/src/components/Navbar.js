@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import Cookies from "js-cookie";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { clearCookie } from "../helpers";
 import { useMediaQuery } from "react-responsive";

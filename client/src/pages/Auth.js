@@ -2,17 +2,15 @@ import { useState } from "react";
 import { TfiEmail } from "react-icons/tfi";
 import { CiLock } from "react-icons/ci";
 import { TiUser } from "react-icons/ti";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { } from "react-router-dom";
 import Cookies from "js-cookie";
 import {
   checkifverify,
   sendmail,
   checkotpv
 } from "../helpers/index"
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function Auth() {
   const dispatch = useDispatch();
