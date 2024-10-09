@@ -18,7 +18,6 @@
 
 .auth_wrapper:hover {
   box-shadow: 0px 0px 10px 1px black;
-
 }
 
 .auth_wrapper .img {
@@ -239,6 +238,7 @@
 .navbar .rocket {
   display: flex;
   align-items: center;
+  gap: 16px;
   margin: 0.2rem;
   position: relative;
   left: 0.5rem;
@@ -251,7 +251,7 @@
   font-size: medium;
   color: rgb(70, 66, 66);
   font-weight: 200;
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   font-family: "Pacifico", cursive;
   cursor: pointer;
 }
@@ -396,7 +396,6 @@
   border: solid 2px rgb(214, 214, 214);
 }
 
-
 .inputnav:hover {
   box-shadow: 0px 1px 1px 0px rgb(6, 0, 36);
   transition: 300ms;
@@ -422,9 +421,6 @@
 }
 
 /*  */
-
-
-
 
 .imagesearch {
   border-radius: 50%;
@@ -482,8 +478,10 @@
 
 .links {
   display: flex;
-  gap: 10px;
+  gap: 5px;
+  align-items: center;
   white-space: nowrap;
+  justify-content: center;
 }
 
 .links a {
@@ -491,9 +489,9 @@
 }
 
 .links a:first-child {
-  position: relative;
+  /* position: relative;
   right: 60px;
-  top: 2px;
+  top: 2px; */
 }
 
 .links a:first-child svg {
@@ -512,7 +510,7 @@
 }
 
 .user {
-  position: relative;
+  /* position: relative; */
   right: 35px;
   display: flex;
   align-items: center;
@@ -540,10 +538,20 @@
   justify-items: center;
 }
 
+.add-button {
+  display: flex;
+  align-items: "center";
+  gap: "4px";
+}
+
+.BsPencilSquare {
+  margin: "2px";
+}
+
 .logout {
   font-size: 17px;
   font-weight: 400;
-  position: relative;
+  /* position: relative; */
   right: 30px;
   border-radius: 4px;
   color: rgb(0, 0, 0);
@@ -551,7 +559,7 @@
   justify-items: center;
   align-items: center;
   /* padding: 5px; */
-  height: 21px;
+  /* height: 21px; */
   top: 4px;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -564,7 +572,6 @@
   object-fit: cover;
   height: 100%;
 }
-
 
 .logout:hover {
   text-decoration: underline;
@@ -594,7 +601,6 @@
 }
 
 @media screen and (max-width: 1231px) {
-
   .navbar {
     display: flex;
     /* justify-content: space-around; */
@@ -630,10 +636,10 @@
 }
 
 @media screen and (max-width: 1231px) {
-  .links {
+  /* .links {
     position: relative;
     right: 20px;
-  }
+  } */
 
   .navbar .search .cat {
     display: flex;
@@ -642,12 +648,9 @@
 }
 
 @media screen and (max-width: 1188px) {
-
 }
 
 @media screen and (max-width: 1153px) {
-
-
   .navbar .search .search_wrap input {
     width: 355px;
   }
@@ -681,8 +684,6 @@
     right: 221px;
   }
 
-
-
   .navbar .search .search_wrap input {
     width: 331px;
   }
@@ -693,7 +694,6 @@
 }
 
 @media screen and (max-width: 1058px) {
-
   .links a:first-child {
     right: 38px;
   }
