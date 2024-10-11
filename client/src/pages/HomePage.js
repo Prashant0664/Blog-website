@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import Footer from "../components/footer/Footer";
 function HomePage({ user, category }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ function HomePage({ user, category }) {
       <Card setmpost={setmpost} setflag={setflag} flag={flag} mpost={mpost} />
       <Breaker text='Featured Post' />
       <Posts category={category} />
-
+      <Footer />
     </div>
   );
 }
