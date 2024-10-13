@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Navbar from "../Navbar";
+import Navbar from "../navbar/Navbar";
 import { BeatLoader } from "react-spinners";
 import { getUser } from "../../helpers";
 import { PuffLoader } from "react-spinners";

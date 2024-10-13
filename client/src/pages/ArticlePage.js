@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import Article from '../components/article/Article';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar/Navbar';
 import { getarticle, increaseView } from '../helpers/index'
 import '../components/article/article.css'
 function ArticlePage() {
