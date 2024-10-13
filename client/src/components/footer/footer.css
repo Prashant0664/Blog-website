@@ -1,9 +1,10 @@
 .desktop-footer {
-  background: linear-gradient(to bottom, #86b2ff, #0244f9);
-  color: #040303;
+  background: #070c25;
+  color: white;
   padding: 20px 0;
-  margin-top: 200px;
+  margin-top: 25rem;
   width: 100%;
+  font-size: larger;
 }
 
 .subfot {
@@ -41,14 +42,16 @@
 
 .footer-column a {
   text-decoration: none;
-  font-family: cursive;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 16px;
+  color:gray
 
 }
 
 .footer-column a:hover {
-  text-decoration: underline;
+  color:white;
+  font-size: 20px;
+
 }
 
 .footer-info {
@@ -96,4 +99,13 @@
 
 .footer-info {
   text-align: center;
+}
+
+.footer-info > p{
+  padding-bottom: 1rem;
+  font-size: large;
+}
+
+.footer-info > p > a{
+  color: white;
 }
