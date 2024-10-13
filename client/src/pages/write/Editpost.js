@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import EditpostP from '../../components/write/EditorP'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getarticle } from '../../helpers/index'
-import Navbar from '../../components/Navbar'
+import Navbar from '../../components/navbar/Navbar'
 
 const Editpost = () => {
     const navigate = useNavigate();

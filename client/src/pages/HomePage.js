@@ -1,7 +1,7 @@
 import React from "react";
 import Breaker from "../components/home/breaker/Breaker";
 import Posts from "../components/home/post/Posts";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar/Navbar";
 import Card from "../components/home/card/Card";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
