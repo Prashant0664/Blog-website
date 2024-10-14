@@ -18,8 +18,6 @@ import {
   showmyposts,
   fetchfollowing,
   changeabout,
-  getallLikes,
-  getallBookmarks,
   showLikemarks
   // getfollowingcount,
 } from "../../helpers";
@@ -197,14 +195,14 @@ function UserProfile() {
     }
 
   }
-  console.log(image,"imagee")
+  console.log(image, "imagee")
   return (
     <div className="profile_container">
       <Navbar />
       <div className="profile">
         <div className="profile-photo">
           <div className="preview_img">
-            {dbPic ? <img src={dbPic} referrerPolicy="no-referrer"/> : <img src={image} referrerPolicy="no-referrer"/>}
+            {dbPic ? <img src={dbPic} referrerPolicy="no-referrer" /> : <img src={image} referrerPolicy="no-referrer" />}
           </div>
         </div>
         <div className="image_button">
