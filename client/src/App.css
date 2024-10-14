@@ -697,7 +697,12 @@
   .links a:first-child {
     right: 38px;
   }
-
+  .for-mid-screen{
+    margin-left: -100px;
+  }
+  .for-mid-screen2{
+    margin-left: -150px;
+  }
   .navbar .search .search_wrap input {
     width: 319px;
   }
@@ -707,6 +712,17 @@
   .search {
     display: none;
     /* background-color: red; */
+  }
+
+  .for-mid-screen{
+    margin-left: 0px;
+  }
+
+  .for-mid-screen2{
+    margin-left: 0px;
+  }
+  .hideonsamllscreen{
+    display:none;
   }
 
   .search_wrap {

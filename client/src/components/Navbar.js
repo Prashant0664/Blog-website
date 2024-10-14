@@ -19,6 +19,7 @@ import {
 function Navbar({ postpage }) {
   const view1 = useMediaQuery({ query: "(max-width: 564px)" });
   const view2 = useMediaQuery({ query: "(max-width: 420px)" });
+  const view3 = useMediaQuery({ query: "(max-width: 825px)" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchsel, setsearchsel] = useState(true);
@@ -107,7 +108,7 @@ function Navbar({ postpage }) {
         </div>
         <span style={{ textDecoration: "underline" }} >All Blogs</span>
       </div>
-      <div className="search">
+      <div className="search" style={{display:`${view3?"none":""}`}}>
         <div className="search_wrap">
           <input className="inputnav" onClick={() => { cssw(true) }} onChange={(e) => { cscontent(e.target.value); cssw(true); onsearchc() }} type="text" name="" value={scontent} id="" placeholder="Search..." />
           {ssw ?
@@ -155,13 +156,13 @@ function Navbar({ postpage }) {
         </div>
       </div>
       {user ? (
-        <div className="links write2" style={{marginRight:'20px'}}>
+        <div className="links write2 for-mid-screen2" style={{ marginRight: '20px' }}>
           <Link
             className={view1 ? "write extra" : "write"}
             to="/write"
-            style={{ visibility: `${postpage && "hidden"}`, display: "flex", alignItems:'center', gap:'4px' }}
+            style={{ visibility: `${postpage && "hidden"}`, display: "flex", alignItems: 'center', gap: '4px' }}
           >
-            <BsPencilSquare className="pencill" style={{marginBottom:'-2px'}}/>
+            <BsPencilSquare className="pencill" style={{ marginBottom: '-2px' }} />
             <span>Add</span>
           </Link>
           <Link className="user" to="/profile">
@@ -173,19 +174,19 @@ function Navbar({ postpage }) {
             to=""
             className={view1 ? "logout extra" : "logout"}
             onClick={logoutFunction}
-            style={{marginTop:'-2px'}}
+            style={{ marginTop: '-2px' }}
           >
             Log Out
           </Link>
         </div>
       ) : (
-        <div style={{marginRight:'20px'}}>
-          <div className="links" style={{gap:'20px'}}>
-            <Link className="add-button" to="/auth" style={{display: "flex", alignItems:'center', gap:'4px'}}>
-              <BsPencilSquare className="BsPencilSquare" style={{marginBottom:'-2px'}}/>
+        <div style={{ marginRight: '20px' }} className="for-mid-screen">
+          <div className="links" style={{ gap: '20px' }}>
+            <Link className="add-button" to="/auth" style={{ display: "flex", alignItems: 'center', gap: '4px' }}>
+              <BsPencilSquare className="BsPencilSquare" style={{ marginBottom: '-2px' }} />
               <span>Add</span>
             </Link>
-            <Link to="/auth" className="logout" style={{marginTop:'-2px'}}>
+            <Link to="/auth" className="logout" style={{ marginTop: '-2px' }}>
               SignUp | LogIn
             </Link>
           </div>
@@ -193,7 +194,7 @@ function Navbar({ postpage }) {
       )}
       {view2 && (
         <div className={!searchsel ? "sidebar" : "sidebar2"}>
-          <ul>
+          {/* <ul>
             <li>
               <RiShieldUserLine size={15} />
               {user ? (
@@ -214,7 +215,7 @@ function Navbar({ postpage }) {
             ) : (
               ""
             )}
-          </ul>
+          </ul> */}
         </div>
       )}
     </nav>
