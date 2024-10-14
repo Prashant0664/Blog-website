@@ -8,7 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import Cookies from "js-cookie";
-
 import { useState } from "react";
 import axios from "axios";
 import { clearCookie } from "../../helpers";
@@ -49,7 +48,7 @@ function Navbar({ postpage }) {
   const { user } = useSelector((state) => ({ ...state }));
 
   const handleLoad = () => {
-    if (user === null || user === undefined) {
+    if (!user) {
       fetch(`${process.env.REACT_APP_BACKEND_URL}/login/success`, {
         method: "GET",
         credentials: "include",
@@ -101,13 +100,16 @@ function Navbar({ postpage }) {
 
   return (
     <nav className="navbar">
-      {ssw ? <div className="btnsrch" onClick={() => cssw(false)}></div> : null}
+      {/* Mobile Search Overlay */}
+      {ssw && <div className="btnsrch" onClick={() => cssw(false)}></div>}
+
       <div className="rocket" onClick={navigateToHome}>
         <div className="img">
           <img src="/OIG.svg" alt="HOME" />
         </div>
         <span style={{ textDecoration: "underline" }}>All Blogs</span>
       </div>
+
       <div className="search">
         <div className="search_wrap">
           <input
@@ -119,42 +121,26 @@ function Navbar({ postpage }) {
               onsearchc();
             }}
             type="text"
-            name=""
             value={scontent}
-            id=""
             placeholder="Search..."
           />
-          {ssw ? (
+          {ssw && (
             <div className="search-result">
               <ul className="search-list">
-                {sres.map((i) => {
-                  return (
-                    <li className="lis-item noun">
-                      {user ? (
-                        <>
-                          <img className="imgscp" src={i.pic} alt="" />
-                          <Link
-                            className="noun"
-                            to={`/ProfileRedirect/${i.id}`}
-                          >
-                            <p className="blackclr">{i.name}</p>
-                          </Link>
-                        </>
-                      ) : (
-                        <>
-                          <img className="imgscp" src={i.pic} alt="" />
-                          <Link className="noun" to={`/auth`}>
-                            <p className="blackclr">{i.name}</p>
-                          </Link>
-                        </>
-                      )}
-                    </li>
-                  );
-                })}
-                <li className="lis-item"></li>
+                {sres.map((i) => (
+                  <li className="lis-item noun" key={i.id}>
+                    <img className="imgscp" src={i.pic} alt={i.name} />
+                    <Link
+                      className="noun"
+                      to={user ? `/ProfileRedirect/${i.id}` : "/auth"}
+                    >
+                      <p className="blackclr">{i.name}</p>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
-          ) : null}
+          )}
         </div>
         <div
           className="imagesearch"
@@ -164,20 +150,22 @@ function Navbar({ postpage }) {
           }}
         >
           <BsSearch size={view1 ? 15 : 20} />
-          {view2 ? (
+          {view2 && (
             <div className="searchsel" onClick={select_action}>
               {searchsel ? <ImMenu size={22} /> : <GiSplitCross size={22} />}
             </div>
-          ) : null}
+          )}
         </div>
       </div>
+
+      {/* User Links */}
       {user ? (
         <div className="links write2" style={{ marginRight: "20px" }}>
           <Link
             className={view1 ? "write extra" : "write"}
             to="/write"
             style={{
-              visibility: `${postpage && "hidden"}`,
+              visibility: postpage && "hidden",
               display: "flex",
               alignItems: "center",
               gap: "4px",
@@ -191,7 +179,7 @@ function Navbar({ postpage }) {
           </Link>
           <Link className="user" to="/profile">
             <div className="user_image">
-              <img src={user.picture} alt="" />
+              <img src={user.picture} alt="User Profile" />
             </div>
           </Link>
           <Link
@@ -223,27 +211,27 @@ function Navbar({ postpage }) {
           </div>
         </div>
       )}
+
+      {/* Mobile Sidebar */}
       {view2 && (
         <div className={!searchsel ? "sidebar" : "sidebar2"}>
           <ul>
             <li>
               <RiShieldUserLine size={15} />
-              {user ? (
-                <Link to="/profile">Profile</Link>
-              ) : (
-                <Link to="/auth">LogIn | SignUp</Link>
-              )}
+              <Link to={user ? "/profile" : "/auth"}>
+                {user ? "Profile" : "LogIn | SignUp"}
+              </Link>
             </li>
             <li>
               <TfiWrite size={15} /> <Link to="/write">Write</Link>
             </li>
-            {user ? (
+            {user && (
               <li className="hamburger_logout">
                 <Link to="/" onClick={logoutFunction}>
                   LogOut
                 </Link>
               </li>
-            ) : null}
+            )}
           </ul>
         </div>
       )}
