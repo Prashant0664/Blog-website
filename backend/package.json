@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-  "author": "sagar",
+  "author": "Prashant0664",
   "license": "MIT",
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
