@@ -22,7 +22,7 @@ function Navbar({ postpage }) {
   const view3 = useMediaQuery({ query: "(max-width: 825px)" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [searchsel, setsearchsel] = useState(true);
+  const [searchsel, setSearchsel] = useState(true);
   const [sres, searchf] = useState([]);
   const [ssw, cssw] = useState(false)
   const [scontent, cscontent] = useState("")
@@ -91,7 +91,7 @@ function Navbar({ postpage }) {
     }
   };
   const select_action = async () => {
-    setsearchsel((prev) => !prev);
+    setSearchsel((prev) => !prev);
   };
 
   return (

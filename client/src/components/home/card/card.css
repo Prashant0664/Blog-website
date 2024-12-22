@@ -1,35 +1,50 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap");
 
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f4f4; /* Light background for better contrast */
+  color: rgb(78, 78, 78);
+}
+
+/* Intro Section */
 .intro_section {
   width: 100%;
   margin: auto;
   text-align: center;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  color: rgb(78, 78, 78);
+  font-size: 16px; /* Slightly increased font size */
+  padding: 20px; /* Add padding for breathing space */
 }
 
+/* Parallax Image */
 .parallax-img {
+  position: relative;
   top: 65px;
   height: 400px;
+  overflow: hidden;
+  border-radius: 10px; /* Rounded corners for a softer look */
 }
 
+/* Card Text */
 .card-text {
   margin: auto;
-  color: rgb(255, 255, 255);
-  font-size: 22px;
+  color: white; /* Change text color for better readability */
+  font-size: 24px; /* Increased font size */
   padding: 20px;
   text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.8);
 }
 
+/* Background Image */
 .bgimg {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
+/* Dropdown Button */
 .dropbtn {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background for contrast */
   color: white;
   padding: 12px 24px;
   font-size: 18px;
@@ -39,10 +54,17 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform for interaction */
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
 }
 
+.dropbtn:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Dropdown Menu */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -52,11 +74,13 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: #ffffff; /* White background for contrast */
   min-width: 160px;
   border-radius: 8px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  opacity: 0; /* Fade effect */
+  transition: opacity 0.2s ease;
 }
 
 .dropdown-content .di {
@@ -68,11 +92,13 @@
 }
 
 .dropdown-content .di:hover {
-  background-color: #ddd;
+  background-color: #f0f0f0; /* Light grey for hover effect */
 }
 
+/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+  opacity: 1; /* Show dropdown with fade effect */
 }
 
 .dropdown:hover .dropbtn {
@@ -80,10 +106,10 @@
   color: black;
 }
 
-/* Responsive Styling */
+/* Responsive Styles */
 @media screen and (max-width: 733px) {
   .card-text {
-    font-size: 18px;
+    font-size: 20px; /* Adjust font size for medium screens */
   }
 }
 
@@ -93,7 +119,7 @@
   }
 
   .card-text {
-    font-size: 16px;
+    font-size: 18px; /* Smaller font for smaller screens */
     padding: 10px;
   }
 
