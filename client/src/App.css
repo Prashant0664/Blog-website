@@ -217,7 +217,6 @@
   background: rgb(255 65 65);
   color: black;
   border-radius: 0px;
-  padding: 10px;
 }
 
 .sidebar ul li a {
@@ -251,7 +250,6 @@
   font-size: medium;
   color: rgb(70, 66, 66);
   font-weight: 200;
-  /* margin-bottom: 15px; */
   font-family: "Pacifico", cursive;
   cursor: pointer;
 }
@@ -268,7 +266,6 @@
   position: relative;
   left: 270px;
   font-size: 15px;
-  /* background-color: red; */
 }
 
 .navbar .search .cat label {
@@ -365,36 +362,30 @@
   margin-left: 300px;
 
   display: flex;
-  /* background-color: red; */
 }
 
 .inputnav:focus {
   border: 2px solid rgb(1, 1, 139);
 }
 
-/*  */
+
 
 .inputnav {
   padding: 0.2rem;
   margin-left: 300px;
-  background-color: rgba(209, 203, 203, 0.3);
+  background-color: rgba(209, 203, 203, 0.3); /* This will be the effective background color */
   border-radius: 15px;
   display: flex;
   width: 400px;
   height: 30px;
-  margin-left: 1rem;
   border: none;
   outline: none;
   position: relative;
-  /* bottom: 1px; */
   font-size: small;
   font-family: cursive;
-  background: transparent;
-  background-color: pink;
-  background-color: rgba(209, 203, 203, 0.3);
-  border-radius: 15px;
-  border: solid 2px rgb(214, 214, 214);
+  border: solid 2px rgb(214, 214, 214); /* Keeping this border for the input */
 }
+
 
 .inputnav:hover {
   box-shadow: 0px 1px 1px 0px rgb(6, 0, 36);
@@ -410,7 +401,6 @@
   color: black;
   border: solid 1px black;
   background-color: rgb(255, 255, 255);
-  /* display: none; */
 }
 
 .inputnav::placeholder {
@@ -420,7 +410,6 @@
   padding: auto;
 }
 
-/*  */
 
 .imagesearch {
   border-radius: 50%;
@@ -431,29 +420,25 @@
   display: grid;
   border: solid 2px rgb(207, 207, 207);
   place-items: center;
-  z-index: 10000000;
-}
-
-.search .image svg {
-  fill: black;
-}
-
-.imagesearch {
-  transition: 400ms;
+  z-index: 10; /* Adjusted z-index */
+  transition: 400ms; /* Consistent transition */
   cursor: pointer;
 }
 
 .imagesearch:hover {
-  transition: 344ms;
   background: transparent;
   transform: scale(1.2);
   border: none;
 }
 
 .imagesearch:active {
-  transition: 400ms;
   transform: scale(0.7);
 }
+
+.search .image svg {
+  fill: black;
+}
+
 
 .search img {
   height: 25px;
@@ -488,11 +473,6 @@
   text-decoration: none;
 }
 
-.links a:first-child {
-  /* position: relative;
-  right: 60px;
-  top: 2px; */
-}
 
 .links a:first-child svg {
   color: black;
@@ -510,7 +490,6 @@
 }
 
 .user {
-  /* position: relative; */
   right: 35px;
   display: flex;
   align-items: center;
@@ -551,15 +530,12 @@
 .logout {
   font-size: 17px;
   font-weight: 400;
-  /* position: relative; */
   right: 30px;
   border-radius: 4px;
   color: rgb(0, 0, 0);
   display: flex;
   justify-items: center;
   align-items: center;
-  /* padding: 5px; */
-  /* height: 21px; */
   top: 4px;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -647,8 +623,6 @@
   }
 }
 
-@media screen and (max-width: 1188px) {
-}
 
 @media screen and (max-width: 1153px) {
   .navbar .search .search_wrap input {
@@ -711,7 +685,6 @@
 @media screen and (max-width: 825px) {
   .search {
     display: none;
-    /* background-color: red; */
   }
 
   .for-mid-screen{

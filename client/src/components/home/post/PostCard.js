@@ -18,7 +18,7 @@ function PostCard({ post, type }) {
   const [sbook, setsbook] = React.useState(true);
   const [sbook2, setsbook2] = React.useState(true);
   // console.log(post); .
-  const utcTimeString = (post && post.createdAt)?post.createdAt:"N/A";
+  const utcTimeString = (post && post.createdAt) ? post.createdAt : "N/A";
   const date = new Date(utcTimeString);
   const localTimeString = date.toLocaleDateString();
   const navigate = useNavigate()
@@ -33,7 +33,7 @@ function PostCard({ post, type }) {
         setsbook(true);
         setsbook2(false);
       }
-      else{
+      else {
         setsbook(false);
 
       }
@@ -176,7 +176,8 @@ function PostCard({ post, type }) {
   return (
     <div className="item" >
       <div className="left">
-        <img src={post && post.image?post.image:""} alt="" onClick={handleDown} />
+        <img src={post && post.image ? post.image : ""} alt="" onClick={handleDown} />
+        
       </div>
       <div className="right">
         <div className="title">
@@ -249,8 +250,8 @@ function PostCard({ post, type }) {
             <RWebShare
               data={{
                 text: "ALL BLOGS",
-                url: `article/` + `${post && post._id?post._id:-1}`,
-                title: `${post && post.title?post.title:"N/A"}`,
+                url: `article/` + `${post && post._id ? post._id : -1}`,
+                title: `${post && post.title ? post.title : "N/A"}`,
               }}
               onClick={() =>
                 console.log("shared successfully!")
@@ -272,7 +273,7 @@ function PostCard({ post, type }) {
                   </Link>
                   :
                   (post && post.user && post.user._id) &&
-                  <Link to={`/ProfileRedirect/${post && post.user._id?post.user._id:-1}`}>
+                  <Link to={`/ProfileRedirect/${post && post.user._id ? post.user._id : -1}`}>
                     <img className="imgscp" src={post.user?.picture} alt="" />
                   </Link>
                 }
@@ -283,9 +284,9 @@ function PostCard({ post, type }) {
               </div>
               <div className="user_middle">
                 {!user ?
-                  <span className="user_name"><Link to={`/auth`}>{(post && post.user && post.user.name )? post.user.name : "N/A"} </Link></span>
+                  <span className="user_name"><Link to={`/auth`}>{(post && post.user && post.user.name) ? post.user.name : "N/A"} </Link></span>
                   :
-                  <span className="user_name"><Link to={`/ProfileRedirect/${post && post.user._id?post.user._id:-1}`}>{post && post.user.name} </Link></span>
+                  <span className="user_name"><Link to={`/ProfileRedirect/${post && post.user._id ? post.user._id : -1}`}>{post && post.user.name} </Link></span>
                 }
                 <span className="date">{localTimeString}</span>
               </div>
@@ -342,7 +343,7 @@ function PostCard({ post, type }) {
                     <RWebShare
                       data={{
                         text: "ALL BLOGS",
-                        url: `article/` + `${post && post._id?post._id:-1}`,
+                        url: `article/` + `${post && post._id ? post._id : -1}`,
                         title: `${post && post.title}`,
                       }}
                       onClick={() =>
