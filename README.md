@@ -1,5 +1,5 @@
 # Blogging Website Version 2.0
-*For **Hacktoberfest** please refer [Contributing.md](https://github.com/Prashant0664/Blog-website/blob/master/CONTRIBUTING.md)* <br/>
+*For **Hacktoberfest** please refer [Contributing.md](https://github.com/codinghs/Blog-website/blob/master/CONTRIBUTING.md)* <br/>
 
 For older version checkout the branch named *version1*
 
@@ -89,10 +89,10 @@ Before you begin, make sure you have the following installed on your system:
 - Git
 
 ### Installation
-(Request: **Please Star⭐️ the Repo or follow [github](https://github.com/Prashant0664/) if you find this project interesting😁!** <br/>)
+(Request: **Please Star⭐️ the Repo or follow [github](https://github.com/codinghs/) if you find this project interesting😁!** <br/>)
 1. Clone this GitHub repository to your local machine:
    ```
-   git clone https://github.com/Prashant0664/All-Blogs-V2.git
+   git clone https://github.com/codinghs/Blog-website.git
    ```
 
 2. Change into the project directory:
@@ -138,7 +138,7 @@ You can now use the Blogging Website to create, like, save, share, and discover 
 ---
 
 ## Contributing
-**Please Star⭐️ the Repo or follow [github](https://github.com/Prashant0664/) if you find this project interesting😁!** <br/>
+**Please Star⭐️ the Repo or follow [github](https://github.com/codinghs/) if you find this project interesting😁!** <br/>
 Contributions to this project are welcome! If you'd like to contribute, please follow these steps:
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
