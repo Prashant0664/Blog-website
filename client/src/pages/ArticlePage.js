@@ -13,8 +13,9 @@ function ArticlePage() {
       await increaseView(postID);
       try {
         const dt = await getarticle(postID);
-        if (dt.response && (dt.response.status === 404 || dt.response.status === 400)) {
+        if (!dt || !dt.msg || typeof dt.msg !== "object") {
           navigate("/404");
+          return;
         }
         setpost(dt.msg);
         return;

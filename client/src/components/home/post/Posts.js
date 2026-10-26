@@ -24,12 +24,13 @@ function Posts({category}) {
     try {
       // setUser(datad.user)
       const data = await getAllPost(activePage, LIMIT, category);
+      if (!data || !Array.isArray(data.posts)) return;
       dispatch({ type: "SET_POSTS", payload: data.posts })
       setActivePage(activePage + 1);
       setTotalPost(data.total);
     } catch (error) {
       // console.log(error);
-      throw error;
+      // console.log(error);
     }
   };
 
@@ -44,7 +45,7 @@ function Posts({category}) {
         </div>
       }
       endMessage={
-        posts.length && (
+        posts.length > 0 && (
           <p style={{ textAlign: "center", marginTop: "10px" }}>
             <b>Looks like You have reached to the end.?!</b>
           </p>

@@ -46,11 +46,9 @@ function PostCard({ post, type }) {
     }
   }
   const navigateToArticle = () => {
-    navigate(`/article/${post._id}`)
+    if (post && post._id) navigate(`/article/${post._id}`)
   }
-  const handleDown = () => {
-    navigate(`/article/${post._id}`)
-  }
+  const handleDown = navigateToArticle;
   const handleheart = async () => {
     try {
       await increaseLike(post._id);
@@ -276,16 +274,12 @@ function PostCard({ post, type }) {
                     <img className="imgscp" src={post.user?.picture} alt="" />
                   </Link>
                 }
-                {post && post.user ? <Link to={`/ProfileRedirect/${post?.user?._id}`}>
-                  <img className="imgscp" src={post.user?.picture} alt="" />
-                </Link> :
-                  <></>}
               </div>
               <div className="user_middle">
                 {!user ?
                   <span className="user_name"><Link to={`/auth`}>{(post && post.user && post.user.name )? post.user.name : "N/A"} </Link></span>
                   :
-                  <span className="user_name"><Link to={`/ProfileRedirect/${post && post.user._id?post.user._id:-1}`}>{post && post.user.name} </Link></span>
+                  <span className="user_name"><Link to={`/ProfileRedirect/${post?.user?._id ?? -1}`}>{post?.user?.name ?? "N/A"} </Link></span>
                 }
                 <span className="date">{localTimeString}</span>
               </div>
