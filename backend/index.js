@@ -35,7 +35,7 @@ if (keys.MONGO_URI) {
     })
     .catch((error) => {
       console.error("MongoDB connection failed:", error.message);
-      if (/auth/i.test(error.message)) {
+      if (/auth|parse|URL/i.test(error.message)) {
         console.error("  -> Check the database user/password in MONGO_URI (URL-encode special characters like @ : / ? # %).");
       } else if (/whitelist|ENOTFOUND|timed out|Server selection/i.test(error.message)) {
         console.error("  -> Check the cluster host in MONGO_URI and that your IP is allowed in Atlas > Network Access.");
@@ -43,13 +43,18 @@ if (keys.MONGO_URI) {
     });
   mongoose.connection.on("disconnected", () => console.warn("MongoDB disconnected"));
 
-  sessionStore = new MongoDBStore({
-    uri: keys.MONGO_URI,
-    collection: "mySessions",
-  });
-  sessionStore.on("error", (error) => {
-    console.error("Session store error:", error.message);
-  });
+  try {
+    sessionStore = new MongoDBStore({
+      uri: keys.MONGO_URI,
+      collection: "mySessions",
+    });
+    sessionStore.on("error", (error) => {
+      console.error("Session store error:", error.message);
+    });
+  } catch (error) {
+    // Invalid connection string: the store throws synchronously. Fall back to memory sessions.
+    sessionStore = undefined;
+  }
 } else {
   console.warn("MONGO_URI is not set - copy backend/.env.example to backend/.env and fill it in.");
 }
