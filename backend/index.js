@@ -26,24 +26,32 @@ app.use(
 );
 
 mongoose.set("strictQuery", false);
+let sessionStore;
 if (keys.MONGO_URI) {
-  mongoose.connect(keys.MONGO_URI).catch((error) => {
-    console.error("MongoDB connection failed:", error.message);
-  });
-}
-
-if (keys.MONGO_URI) {
-  new MongoDBStore(
-    {
-      uri: keys.MONGO_URI,
-      collection: "mySessions",
-    },
-    function (error) {
-      if (error) {
-        // console.log("err", error);
+  mongoose
+    .connect(keys.MONGO_URI, { serverSelectionTimeoutMS: 10000 })
+    .then((conn) => {
+      console.log(`MongoDB connected: ${conn.connection.host}/${conn.connection.name}`);
+    })
+    .catch((error) => {
+      console.error("MongoDB connection failed:", error.message);
+      if (/auth/i.test(error.message)) {
+        console.error("  -> Check the database user/password in MONGO_URI (URL-encode special characters like @ : / ? # %).");
+      } else if (/whitelist|ENOTFOUND|timed out|Server selection/i.test(error.message)) {
+        console.error("  -> Check the cluster host in MONGO_URI and that your IP is allowed in Atlas > Network Access.");
       }
-    }
-  );
+    });
+  mongoose.connection.on("disconnected", () => console.warn("MongoDB disconnected"));
+
+  sessionStore = new MongoDBStore({
+    uri: keys.MONGO_URI,
+    collection: "mySessions",
+  });
+  sessionStore.on("error", (error) => {
+    console.error("Session store error:", error.message);
+  });
+} else {
+  console.warn("MONGO_URI is not set - copy backend/.env.example to backend/.env and fill it in.");
 }
 
 app.use((req, res, next) => {
@@ -62,6 +70,7 @@ app.use(session({
   secret: keys.COOKIE_KEY || "local-development-secret",
   resave: false,
   saveUninitialized: true,
+  store: sessionStore, // undefined -> falls back to in-memory store
   cookie: {
     maxAge: 15 * 24 * 60 * 60 * 1000, // Uncomment if needed for cookie lifespan
     sameSite: process.env.NODE_ENV === 'production' ? "none" : "lax", // "none" for cross-site cookies in production
