@@ -12,6 +12,8 @@ function Posts({category}) {
   const LIMIT = 6;
   const [totalPosts, setTotalPost] = useState(0);
   const [activePage, setActivePage] = useState(1);
+  const [loadError, setLoadError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch()
   const { posts } = useSelector(state => ({ ...state }))
   useEffect(() => {
@@ -24,7 +26,12 @@ function Posts({category}) {
     try {
       // setUser(datad.user)
       const data = await getAllPost(activePage, LIMIT, category);
-      if (!data || !Array.isArray(data.posts)) return;
+      if (!data || !Array.isArray(data.posts)) {
+        setLoadError(true);
+        return;
+      }
+      setLoadError(false);
+      setLoaded(true);
       dispatch({ type: "SET_POSTS", payload: data.posts })
       setActivePage(activePage + 1);
       setTotalPost(data.total);
@@ -52,7 +59,15 @@ function Posts({category}) {
         )
       }
     >
-      {(posts && posts.length === 0) ? (
+      {(posts.length === 0 && loadError) ? (
+        <p style={{ textAlign: "center", marginTop: "20px" }}>
+          Couldn't load posts. Please check that the server is running and try again.
+        </p>
+      ) : (posts.length === 0 && loaded) ? (
+        <p style={{ textAlign: "center", marginTop: "20px" }}>
+          No posts yet. Be the first to write one!
+        </p>
+      ) : (posts.length === 0) ? (
         <div className="post_loader">
           <PuffLoader color="black" />
         </div>
