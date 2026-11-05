@@ -112,7 +112,19 @@ Before you begin, make sure you have the following installed on your system:
    npm install
    ```
 
-5. Set up your MongoDB database and configure the connection details in the backend's `.env` file.
+5. Create the `.env` files from the templates:
+   ```
+   cp ../backend/.env.example ../backend/.env
+   cp .env.example .env
+   ```
+   Then edit `backend/.env` and set `MONGO_URI` to your MongoDB Atlas connection string
+   (Atlas → your cluster → **Connect** → **Drivers**), with your database username and password filled in:
+   ```
+   MONGO_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/blog?retryWrites=true&w=majority
+   ```
+   - URL-encode special characters in the password (e.g. `@` → `%40`), or use a letters-and-numbers password.
+   - In Atlas → **Network Access**, add your current IP address, otherwise the connection will time out.
+   - When the backend starts you should see `MongoDB connected: ...` in the terminal.
 
 _IMP: Seperate setup of both frontend and backend is given in *client* and *backend* folders *Readme.md*_
 

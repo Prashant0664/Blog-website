@@ -54,7 +54,7 @@ exports.register = async (req, res) => {
         .json({ message: "Enter password between 6 to 15 characters !" });
     }
 
-    const check = await User.findOne({ temail });
+    const check = await User.findOne({ email: temail });
     if (check) {
       return res.status(400).json({
         message:
