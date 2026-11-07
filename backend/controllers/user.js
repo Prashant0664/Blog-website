@@ -1,7 +1,7 @@
 const { validateEmail, validateLength } = require("../helper/validation");
 const User = require("../models/User");
 const Post = require("../models/Post");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const { generateToken } = require("../helper/token");
 const Code = require('../models/Code');
 const { sendResetCode } = require("../helper/mail");
@@ -54,7 +54,7 @@ exports.register = async (req, res) => {
         .json({ message: "Enter password between 6 to 15 characters !" });
     }
 
-    const check = await User.findOne({ temail });
+    const check = await User.findOne({ email: temail });
     if (check) {
       return res.status(400).json({
         message:

@@ -61,10 +61,6 @@ function Article({ post, __id }) {
   useEffect(() => {
     const fetchMyProfile = async () => {
       try {
-        while (!post) {
-
-        }
-        await increaseView(__id);
         const datasd = await getView(__id);
         setview(datasd.view)
         const datalikes = await getLikes(__id);
@@ -80,20 +76,11 @@ function Article({ post, __id }) {
           }
         }
         setmm(post.user.picture);
-        const sfcr = await checkfollowing(user.id, post.user._id);
-        if (sfcr.msg === "ok") {
-          sfc(true);
-        }
-        else {
-          sfc(false);
-        }
-        // const myprofile = await getUser(user.id);
-        // setDbPic(myprofile._doc.picture);
-        // setdbname(myprofile._doc.name);
-
-        setDbPic(user.picture);
-        setdbname(user.name);
         if (user) {
+          const sfcr = await checkfollowing(user.id, post.user._id);
+          sfc(sfcr.msg === "ok");
+          setDbPic(user.picture);
+          setdbname(user.name);
           const data = await checkbookmark(
             __id,
             user.id
@@ -471,7 +458,7 @@ function Article({ post, __id }) {
             </div>
             <div className="article_title" >{post.title}</div>
             <span className="post_date">
-              {formattedDate.toUpperCase()} | {post.category.toUpperCase()}{" "} | {view ? `${view}` + " views" : ""} | {likec ? `${likec}` + " likes" : `${likec} likes`}
+              {formattedDate.toUpperCase()} | {(post.category || "general").toUpperCase()}{" "} | {view ? `${view}` + " views" : ""} | {likec ? `${likec}` + " likes" : `${likec} likes`}
             </span>
             <br />
             <div className="article_image">
@@ -523,11 +510,11 @@ function Article({ post, __id }) {
                     {allc.length == 0 ? <div className="">Be the First One to Comment</div>
                       :
                       <div>
-                        {allc.map((i) => {
+                        {allc.map((i, idx) => {
                           const date = new Date(i.commentAt);
                           const dates = date.toLocaleDateString()
                           return (
-                            <div className="com-all">
+                            <div className="com-all" key={i._id || idx}>
                               <div className="com-single">
                                 <div className="side-com">
                                   <div className="com-pic">

@@ -3,13 +3,14 @@ const passport = require("passport");
 const keys = require("../config/keys")
 const User = require('../models/User');
 
-passport.use(new GoogleStrategy({
-  clientID: keys.GOOGLE_CLIENT_ID,
-  clientSecret: keys.GOOGLE_CLIENT_SECRET,
-  callbackURL: "/auth/google/callback",
-  scope: ["profile", "email"]
-},
-  async (accessToken, refreshToken, profile, done) => {
+if (keys.GOOGLE_CLIENT_ID && keys.GOOGLE_CLIENT_SECRET) {
+  passport.use(new GoogleStrategy({
+    clientID: keys.GOOGLE_CLIENT_ID,
+    clientSecret: keys.GOOGLE_CLIENT_SECRET,
+    callbackURL: "/auth/google/callback",
+    scope: ["profile", "email"]
+  },
+    async (accessToken, refreshToken, profile, done) => {
     try {
       User.findOne({ email: profile.emails[0].value }).then((user) => {
         if (user && user.picture == "https://res.cloudinary.com/dmhcnhtng/image/upload/v1643044376/avatars/default_pic_jeaybr.png") {
@@ -44,8 +45,9 @@ passport.use(new GoogleStrategy({
     catch (error) {
       // console.log(error)
     }
-  }
-));
+    }
+  ));
+}
 
 // passport.serializeUser((user, done) => {
 //   done(null, user.id)

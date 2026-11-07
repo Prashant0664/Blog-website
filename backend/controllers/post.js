@@ -162,8 +162,8 @@ exports.getcomment = async (req, res) => {
 }
 exports.allPost = async (req, res) => {
   try {
-    const page = parseInt(req.query.page);
-    const size = parseInt(req.query.size);
+    const page = parseInt(req.query.page) || 1;
+    const size = parseInt(req.query.size) || 6;
     const cat = req.body.mpost;
     if (!cat || cat == "" || cat == "all") {
       const skip = (page - 1) * size;
@@ -182,8 +182,8 @@ exports.allPost = async (req, res) => {
     }
     else {
       const skip = (page - 1) * size;
+      const total = await Post.countDocuments({ category: cat });
       const posts = await Post.find({ category: cat }).skip(skip).limit(size);
-      const total = posts.length;
       await Promise.all(
         posts.map((post) => post.populate("user", "name picture about"))
       );
