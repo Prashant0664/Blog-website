@@ -23,7 +23,7 @@ else {
         GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT,
         GOOGLE_CLIENT_SECRET: process.env.GOOGLE_SECRET,
         COOKIE_KEY: process.env.COOKIE_KEY,
-        TOKEN_SECRET: process.env.TOKEN_SECRET,
+        TOKEN_SECRET: process.env.TOKEN_SECRET || "local-development-secret",
         CLOUD_NAME: process.env.CLOUD_NAME,
         CLOUD_API_KEY: process.env.CLOUD_API_KEY,
         CLOUD_API_SECRET: process.env.CLOUD_API_SECRET,

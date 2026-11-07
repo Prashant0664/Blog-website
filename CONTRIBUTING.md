@@ -2,7 +2,7 @@
 
 **[hacktoberfest](https://hacktoberfest.digitalocean.com/). If you don't know where to start, feel free to watch the videos linked below, and read the contribution rules. Happy Contributing!**
 
-P.S. Star⭐️ this repo or follow [github](https://github.com/Prashant0664/) if you find this project interesting😁😍! <br/>
+P.S. Star⭐️ this repo or follow [github](https://github.com/codinghs/) if you find this project interesting😁😍! <br/>
 
 # 📌 Videos 📽️:
 
@@ -64,7 +64,7 @@ An easy way to avoid conflicts is to add an 'upstream' for your git repo, as oth
 
 
 ```
-git remote add upstream https://github.com/Prashant0664/Blog-website.git
+git remote add upstream https://github.com/codinghs/Blog-website.git
 ```
 
 

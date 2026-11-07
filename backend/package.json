@@ -4,13 +4,14 @@
   "description": "multi-user blog application with mern",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "node --check index.js"
   },
-  "author": "Prashant0664",
+  "author": "codinghs",
   "license": "MIT",
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "cloudinary": "^2.5.0",
     "connect-mongo": "^5.1.0",
     "connect-mongodb-session": "^5.0.0",

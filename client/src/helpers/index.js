@@ -578,12 +578,12 @@ export const getAllPost = async (activePage, LIMIT,mpost) => {
   try {
     const { data } = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/getallpost`,
+      { mpost },
       {
         params: {
           page: activePage,
           size: LIMIT,
         },
-        mpost
       }
     );
     return data;

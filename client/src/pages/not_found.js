@@ -39,7 +39,7 @@ const Not_found = () => {
     </Link>
 
     <div style={{ marginTop: '30px' }}>
-        <a href="https://www.github.com/prashant0664" style={{ 
+        <a href="https://www.github.com/codinghs" style={{ 
             display: 'block', 
             marginBottom: '10px', 
             color: '#007bff', 
@@ -47,11 +47,11 @@ const Not_found = () => {
             fontSize: '18px' 
         }}>Guide/Code/Owner/License</a>
         
-        <a href="https://www.github.com/prashant0664" style={{ 
+        <a href="https://www.github.com/codinghs" style={{ 
             color: '#007bff', 
             textDecoration: 'none', 
             fontSize: '18px' 
-        }}>Developed by Prashant0664</a>
+        }}>Developed by codinghs</a>
     </div>
 </div>
 

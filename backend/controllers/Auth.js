@@ -1,7 +1,7 @@
 const { validateEmail, validateLength } = require("../helper/validation");
 const User = require("../models/User");
 const Post = require("../models/Post");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const { generateToken } = require("../helper/token");
 const Code = require('../models/Code');
 const { sendResetCode } = require("../helper/mail");

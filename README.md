@@ -1,5 +1,5 @@
 # Blogging Website Version 2.0
-*For **Hacktoberfest** please refer [Contributing.md](https://github.com/Prashant0664/Blog-website/blob/master/CONTRIBUTING.md)* <br/>
+*For **Hacktoberfest** please refer [Contributing.md](https://github.com/codinghs/Blog-website/blob/master/CONTRIBUTING.md)* <br/>
 
 For older version checkout the branch named *version1*
 
@@ -89,10 +89,10 @@ Before you begin, make sure you have the following installed on your system:
 - Git
 
 ### Installation
-(Request: **Please Star⭐️ the Repo or follow [github](https://github.com/Prashant0664/) if you find this project interesting😁!** <br/>)
+(Request: **Please Star⭐️ the Repo or follow [github](https://github.com/codinghs/) if you find this project interesting😁!** <br/>)
 1. Clone this GitHub repository to your local machine:
    ```
-   git clone https://github.com/Prashant0664/All-Blogs-V2.git
+   git clone https://github.com/codinghs/Blog-website.git
    ```
 
 2. Change into the project directory:
@@ -112,7 +112,19 @@ Before you begin, make sure you have the following installed on your system:
    npm install
    ```
 
-5. Set up your MongoDB database and configure the connection details in the backend's `.env` file.
+5. Create the `.env` files from the templates:
+   ```
+   cp ../backend/.env.example ../backend/.env
+   cp .env.example .env
+   ```
+   Then edit `backend/.env` and set `MONGO_URI` to your MongoDB Atlas connection string
+   (Atlas → your cluster → **Connect** → **Drivers**), with your database username and password filled in:
+   ```
+   MONGO_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/blog?retryWrites=true&w=majority
+   ```
+   - URL-encode special characters in the password (e.g. `@` → `%40`), or use a letters-and-numbers password.
+   - In Atlas → **Network Access**, add your current IP address, otherwise the connection will time out.
+   - When the backend starts you should see `MongoDB connected: ...` in the terminal.
 
 _IMP: Seperate setup of both frontend and backend is given in *client* and *backend* folders *Readme.md*_
 
@@ -138,7 +150,7 @@ You can now use the Blogging Website to create, like, save, share, and discover 
 ---
 
 ## Contributing
-**Please Star⭐️ the Repo or follow [github](https://github.com/Prashant0664/) if you find this project interesting😁!** <br/>
+**Please Star⭐️ the Repo or follow [github](https://github.com/codinghs/) if you find this project interesting😁!** <br/>
 Contributions to this project are welcome! If you'd like to contribute, please follow these steps:
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
